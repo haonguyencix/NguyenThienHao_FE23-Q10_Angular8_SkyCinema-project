@@ -1,0 +1,86 @@
+<div class="showtime-in-detail-page">
+    <div class="row">
+
+        <div class="col-md-12">
+
+            <div class="row">
+                <div class="col-md-10 offset-md-2">
+                    <div class="theatre-tabs d-flex justify-content-between mb-4 mt-3">
+                        <div class="theatre-tab" *ngFor="let logo of theatresArray; let index = index"
+                            [ngClass]="{'active': isActivated === index}" (click)="changeTheatreTab(index, logo.logo)">
+                            <img [src]="logo.logo" width="60px" height="60px">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2 time-line text-center">
+
+                    <ng-container *ngIf="filmDetail.LichChieu != null">
+                        <div *ngFor="let item of filmDetail.LichChieu; let index = index">
+                            <div class="time ml-auto" (click)="getDate(index, item.NgayChieuGioChieu, item.MaLichChieu)"
+                                [ngClass]="{'active': activatedDate === index, 'sat': index === 5, 'sun': index === 6}">
+                                {{item.NgayChieuGioChieu | date: "MMM dd"}}
+                            </div>
+                        </div>
+                    </ng-container>
+
+                </div>
+
+                <div class="col-md-10">
+
+                    <div [ngSwitch]="isChanged" class="theatre-tabs-content">
+
+                        <ng-container *ngFor="let theatres of theatresArray">
+                            <div class="theatres" *ngSwitchCase="theatres.id">
+                                <div class="card" *ngFor="let item of theatres.theatreArray">
+                                    <div class="theatre row no-gutters">
+                                        <div class="col-md-2 text-center">
+                                            <img [src]="item.img" class="img" width="60px" height="60px">
+                                        </div>
+                                        <div class="col-md-10">
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{item.name}}</h5>
+                                                <p class="card-text">{{item.addr}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex">
+                                        <div class="col-md-2 text-center mt-2">
+                                            <img class="" src="/assets/img/2d.png" width="37px" height="35px">
+                                        </div>
+                                        <div class="col-md-10 d-flex p-0 mt-1">
+
+                                            <div *ngIf="isDate != 'Today'; else today" class="showtime mr-4"
+                                                (click)="goToTicketBoxPage(showtimeId, item)">
+                                                {{isDate | date: "hh:mm"}}
+                                            </div>
+
+                                            <ng-template #today>
+                                                <div class="showtime mr-4"
+                                                    *ngFor="let item of filmDetail.LichChieu; let i = index"
+                                                    (click)="goToTicketBoxPage(item.MaLichChieu, theatreDeafaultObj)">
+                                                    <ng-container *ngIf="i === 0">
+                                                        {{item.NgayChieuGioChieu | date: "hh:mm"}}
+                                                    </ng-container>
+                                                </div>
+                                            </ng-template>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </ng-container>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

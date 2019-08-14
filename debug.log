@@ -1,0 +1,5 @@
+[0802/215921.740:ERROR:process_info.cc(359)] UncheckedAllocate
+[0802/220041.685:ERROR:process_info.cc(359)] UncheckedAllocate
+[0802/220235.821:ERROR:process_info.cc(359)] UncheckedAllocate
+[0802/220249.449:ERROR:filesystem_win.cc(148)] DeleteFile C:\Users\Admin\AppData\Local\Google\Chrome\User Data\Crashpad\reports\3eb53779-068b-4600-84ee-2c3a5cf7cad4.dmp: The process cannot access the file because it is being used by another process. (0x20)
+[0802/220252.556:ERROR:filesystem_win.cc(148)] DeleteFile C:\Users\Admin\AppData\Local\Google\Chrome\User Data\Crashpad\reports\22c09038-7bb4-4f30-a2d4-fca1ad0b67b0.dmp: The process cannot access the file because it is being used by another process. (0x20)

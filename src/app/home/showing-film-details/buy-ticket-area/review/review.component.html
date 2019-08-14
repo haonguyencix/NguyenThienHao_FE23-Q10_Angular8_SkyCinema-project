@@ -1,0 +1,121 @@
+<div class="review">
+    <!-- Button trigger modal -->
+    <div class="review-click p-3 mb-3" data-toggle="modal" data-target="#evaluate">
+        <div class="row">
+            <div class="col-md-1">
+                <div class="avatar">
+                    <img [src]="isLogedIn? avt: '/assets/img/avatar.png'" width="40px" height="40px"
+                        style="border-radius: 50%">
+                </div>
+            </div>
+            <div class="col-md-8 pl-1">
+                <p class="thinking">What are you thinking ?</p>
+            </div>
+            <div class="col-md-3 text-right">
+                <i class="fa fa-star icon-star"></i>
+                <i class="fa fa-star icon-star"></i>
+                <i class="fa fa-star icon-star"></i>
+                <i class="fa fa-star icon-star"></i>
+                <i class="fa fa-star icon-star"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="reviews-area">
+        <ng-container *ngFor="let item of revArr; let index = index">
+            <div class="review-area p-3 mt-4" *ngIf="item.id.split('-')[0] === filmId">
+                <img *ngIf="item.username === username" class="close" src="assets/img/lightbox-close.png"
+                    (click)="delete(item.id)">
+                <div class="row">
+                    <div class="col-md-1">
+                        <div class="avatar">
+                            <img [src]="item.avt" width="40px" height="40px" style="border-radius: 50%">
+                            <div *ngIf="item.isFbLogedIn" class="div-icon text-center">
+                                <i class="fa fa-facebook icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 pl-1">
+                        {{item.username}}
+                    </div>
+                    <div class="col-md-1 offset-md-8 text-right">
+                        <p class="point m-0">{{item.point}}</p>
+                    </div>
+                </div>
+                <div class="col-md-12 my-2 p-0">
+                    <p class="thinking">{{item.post}}</p>
+                </div>
+                <div class="line"></div>
+                <div class="row interaction">
+                    <div class="col-md-2 like">
+                        <input [disabled]="!isLogedIn" [id]="index" [name]="index" type="checkbox"
+                            (change)="check($event)" [checked]="item.isLiked">
+                        <label [for]="index" class="m-0"> {{item.likes}} Like</label>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="evaluate" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="rating">
+                    <input [disabled]="!isLogedIn" type="radio" id="10" name="rating" (change)="isChecked($event)" />
+                    <label for="10"></label>
+
+                    <input [disabled]="!isLogedIn" type="radio" id="9" name="rating" (change)="isChecked($event)" />
+                    <label class="half" for="9"></label>
+
+                    <input [disabled]="!isLogedIn" type="radio" id="8" name="rating" (change)="isChecked($event)" />
+                    <label for="8"></label>
+
+                    <input [disabled]="!isLogedIn" type="radio" id="7" name="rating" (change)="isChecked($event)" />
+                    <label class="half" for="7"></label>
+
+                    <input [disabled]="!isLogedIn" type="radio" id="6" name="rating" (change)="isChecked($event)" />
+                    <label for="6"></label>
+
+                    <input [disabled]="!isLogedIn" type="radio" id="5" name="rating" (change)="isChecked($event)" />
+                    <label class="half" for="5"></label>
+
+                    <input [disabled]="!isLogedIn" type="radio" id="4" name="rating" (change)="isChecked($event)" />
+                    <label for="4"></label>
+
+                    <input [disabled]="!isLogedIn" type="radio" id="3" name="rating" (change)="isChecked($event)" />
+                    <label class="half" for="3"></label>
+
+                    <input [disabled]="!isLogedIn" type="radio" id="2" name="rating" (change)="isChecked($event)" />
+                    <label for="2"></label>
+
+                    <input [disabled]="!isLogedIn" type="radio" id="1" name="rating" (change)="isChecked($event)" />
+                    <label class="half" for="1"></label>
+                </div>
+                <h2 class="star-point">{{starPoint}}/10 point(s)</h2>
+                <img class="close" data-dismiss="modal" src="assets/img/lightbox-close.png">
+            </div>
+            <div class="modal-body">
+                <textarea [disabled]="!isLogedIn" (input)="str=$event.target.value" rows="2"
+                    class="input-comment" placeholder="Let everybody knows what you are thinking..."></textarea>
+
+                <ng-container *ngIf="isLogedIn; else logedIn">
+                    <button mat-button class="btn btn-evaluate w-100 mt-4" (click)="post()"
+                        data-dismiss="modal">POST</button>
+                </ng-container>
+
+                <ng-template #logedIn>
+                    <button mat-button class="btn btn-evaluate w-100 mt-4" (click)="goToLoginPage()"
+                        data-dismiss="modal">LOGIN</button>
+                    <div class="text-center">
+                        <span class="text-alert">(*) Login to enable comment function</span>
+                    </div>
+                </ng-template>
+
+            </div>
+        </div>
+    </div>
+</div>

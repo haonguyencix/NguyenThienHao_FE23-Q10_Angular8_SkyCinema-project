@@ -1,0 +1,93 @@
+<!-- Begin header -->
+<div class="header fixed-top">
+  <nav class="navbar navbar-expand-md" id="header">
+
+    <!-- Logo/Brand -->
+    <div class="navbar__logo-brand pl-5 w-25">
+      <img id="logo" src="/assets/img/main-logo.png" width="95px" height="75px">
+      <a id="logo-text" class="navbar-brand" routerLink="/home" href="#">Cinema</a>
+    </div>
+
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      Menu
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse text-center" id="collapsibleNavbar">
+      <ul id="navbar-nav" class="navbar-nav links mx-auto w-50">
+        <li class="nav-item">
+          <a id="showtime" class="nav-link p-3" (click)="scrollToShowtime()">Showtime</a>
+        </li>
+        <li class="nav-item">
+          <a id="theatres" class="nav-link p-3" (click)="scrollToTheatres()">Theatres</a>
+        </li>
+        <li class="nav-item">
+          <a id="news" class="nav-link p-3" (click)="scrollToNews()">News</a>
+        </li>
+        <li class="nav-item">
+          <a id="promotions" class="nav-link p-3" (click)="scrollToPromotions()">Promotions</a>
+        </li>
+      </ul>
+
+      <!-- Login and Sign in -->
+      <ul id="navbar-nav" class="navbar-nav user-account w-25 pl-auto">
+        <li class="nav-item">
+          <img class="avatar" [src]="isLogedIn? avt: '/assets/img/avatar.png'" width="35px" height="35px"
+            style="border-radius: 50%; margin-top: 5px">
+        </li>
+
+        <ng-container *ngIf="isLogedIn; else notLogin">
+
+          <li class="nav-item">
+
+            <ng-container *ngIf="!isFbLogedIn; else fbLogin">
+              <a class="nav-link border-right py-0 my-2"
+                routerLink="/home/form-pages/user-info">{{ (isUsername.length > 12)? (isUsername | shortcut:12): (isUsername) }}</a>
+            </ng-container>
+
+            <ng-template #fbLogin>
+              <a class="nav-link border-right py-0 my-2" href="https://www.facebook.com/settings"
+                target="_blank">{{ (isUsername.length > 12)? (isUsername | shortcut:12): (isUsername) }}</a>
+            </ng-template>
+
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link register" (click)="logOut()">Log out</a>
+          </li>
+        </ng-container>
+
+        <ng-template #notLogin>
+          <li class="nav-item">
+            <a class="nav-link border-right py-0 my-2" routerLink="/home/form-pages/login-page">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link register" routerLink="/home/form-pages/register-page">Register</a>
+          </li>
+        </ng-template>
+
+      </ul>
+    </div>
+
+  </nav>
+
+  <!-- Progress bar -->
+  <div class="progress-container">
+    <div class="progress-bar" id="progress-bar"></div>
+  </div>
+
+</div>
+<!-- End header -->
+
+<!-- Back to top -->
+<div class="back-to-top" [ngClass]="{'show': showBTT}">
+  <button (click)="backToTop()">
+    <img src="/assets/img/back-to-top.png" width="65px" height="65px">
+  </button>
+</div>
+
+<!-- Support -->
+<div class="support" [ngClass]="{'show': showSup}">
+  <img src="/assets/img/support.png" width="120px">
+</div>

@@ -1,0 +1,38 @@
+<div class="showtime">
+    
+    <!-- Nav tabs -->
+    <div class="showtime-tabs d-flex justify-content-between mx-auto pt-4">
+        <p class="showtime-link" [ngClass]="{'active': showingFilmStatus}" (click)="appearShowingFilm()">
+            Showing movies
+        </p>
+        <p class="showtime-link mr-2" [ngClass]="{'active': !showingFilmStatus}" (click)="appearCommingSoonFilm()">
+            Comming soon
+        </p>
+    </div>
+    
+    <!-- Tab panes -->
+    <div class="showtime-tabs-content">
+        <ng-container *ngIf="showingFilmStatus; else commingSoonFilm">
+            <owl-carousel [options]="carouselOptions" [items]="showingFilmList"
+                [carouselClasses]="['owl-theme', 'row', 'sliding']">
+                <ng-container *ngIf="showingFilmList !=null">
+                    <div class="item" *ngFor="let item of showingFilmList; let index = index">
+                        <app-showing-item [showingFilm]="item"></app-showing-item>
+                    </div>
+                </ng-container>
+            </owl-carousel>
+        </ng-container>
+        <ng-template #commingSoonFilm>
+            <owl-carousel [options]="carouselOptions" [items]="commingFilmList"
+                [carouselClasses]="['owl-theme', 'row', 'sliding']">
+                <ng-container *ngIf="commingFilmList !=null">
+                    <div class="item" *ngFor="let item of commingFilmList">
+                        <app-comming-item [commingFilm]="item"></app-comming-item>
+                    </div>
+                </ng-container>
+            </owl-carousel>
+        </ng-template>
+    </div>
+</div>
+
+<app-modal-trailer></app-modal-trailer>

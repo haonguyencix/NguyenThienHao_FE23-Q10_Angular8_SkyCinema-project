@@ -1,0 +1,61 @@
+.login-page {
+  padding: 83px 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  .login-form {
+    padding: 25px;
+    color: rgba(220, 220, 220);
+    box-shadow: 0 0 40px 2px gray;
+    border-radius: 20px;
+    .form-control {
+      background-color: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(220, 220, 220);
+      color: rgba(220, 220, 220);
+      border-radius: 0;
+      &:focus {
+        box-shadow: none;
+      }
+    }
+    .form-check-label {
+      color: rgba(220, 220, 220);
+      .form-check-input {
+        margin-top: 6px;
+      }
+    }
+    .btn-fb-login {
+      color: gainsboro;
+      line-height: 40px;
+      background-color: #3b5998;
+      border-radius: 5px;
+      &:focus {
+        box-shadow: none;
+      }
+      .icon-fb {
+        color: gainsboro;
+      }
+    }
+    .btn-signin {
+      border-radius: 6px;
+      font-size: 24px;
+      height: 42px;
+      background-color: #00334d;
+      color: rgba(220, 220, 220);
+      font-family: Klavika-Bold;
+      &:focus {
+        box-shadow: none;
+      }
+    }
+    .text-footer {
+      color: rgba(180, 180, 180);
+      width: 76%;
+      .text-forgot {
+        border-right: 1px solid rgba(180, 180, 180);
+        cursor: pointer;
+      }
+      .text-reg {
+        color: rgba(180, 180, 180);
+        cursor: pointer;
+      }
+    }
+  }
+}

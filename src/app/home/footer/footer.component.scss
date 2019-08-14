@@ -1,0 +1,13 @@
+.footer{
+    box-shadow: 0 0 20px 2px gray;
+    padding: 10px 0;
+    color: rgba(220, 220, 220);
+    .footer-text{
+        font-size: 13px;
+        color: rgba(180, 180, 180);
+    }
+    .footer-img{
+        border-radius: 50%;
+        margin: 0 8px 5px 0;
+    }
+}

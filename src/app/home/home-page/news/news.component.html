@@ -1,0 +1,56 @@
+<div class="news">
+  <div class="container">
+
+    <div id="arr1" class="new-cards d-flex justify-content-between" *ngIf="newsArray1 !== null">
+      <div class="card text-left"
+        *ngFor="let item of newsArray1 | paginate: { itemsPerPage: 2, currentPage: pageIndex }, let index = index">
+        <a class="text-decoration-none" [href]="item.link" target="_blank">
+          <img class="card-img-top" [src]="item.poster">
+          <div class="card-body">
+            <h4 class="card-title">{{item.title}}</h4>
+            <p class="card-text">{{item.text}}</p>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-8 pr-0">
+        <div id="arr2" class="new-cards d-flex justify-content-between" *ngIf="newsArray2 !== null">
+          <div class="card text-left"
+            *ngFor="let item of newsArray2 | paginate: { itemsPerPage: 2, currentPage: pageIndex }, let index = index">
+            <a class="text-decoration-none" [href]="item.link" target="_blank">
+              <img class="card-img-top" [src]="item.poster">
+              <div class="card-body">
+                <h4 class="card-title">{{item.title}}</h4>
+                <p class="card-text">{{item.text}}</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 pl-0">
+        <div class="new-cards" *ngIf="newsArray3 !== null">
+          <div id="arr3" class="card" *ngFor="let item of newsArray3 | paginate: { itemsPerPage: 4, currentPage: pageIndex }, let index = index">
+              <div class="row no-gutters">
+                <div class="col-md-2">
+                    <img id="arr3-img" class="card-img-top" [src]="item.poster">
+                </div>
+                <div class="col-md-10">
+                  <div class="card-body ml-2 py-2">
+                      <h4 id="arr3-title" class="card-title m-0">{{(item.title.length > 46)? (item.title | shortcut:46): (item.title)}}</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ngx-pagination -->
+    <pagination-controls class="my-pagination" (pageChange)="pageIndex=$event"></pagination-controls>
+
+  </div>
+</div>

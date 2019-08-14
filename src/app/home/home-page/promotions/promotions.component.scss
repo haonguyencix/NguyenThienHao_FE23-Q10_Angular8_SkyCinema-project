@@ -1,0 +1,39 @@
+.promotions {
+  .theatre-tabs {
+    padding: 0 12%;
+    .theatre-tab {
+      cursor: pointer;
+      opacity: 0.6;
+      transition: all 0.3s;
+      img {
+        border-radius: 50%;
+      }
+      &:hover {
+        opacity: 1;
+      }
+    }
+    .active {
+      opacity: 1;
+      transform: scale(1.2);
+      img {
+        border-radius: 50%;
+        box-shadow: 0 0 40px 5px gray;
+      }
+    }
+  }
+  .theatre-tabs-content {
+    height: 430px;
+    .promotion-cards {
+      .card-img {
+        transition: transform .3s;
+        &:active{
+          transform: scale(0.95);
+        }
+        cursor: pointer;
+        img {
+          border-radius: 15px;
+        }
+      }
+    }
+  }
+}

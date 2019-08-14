@@ -1,0 +1,129 @@
+.banner-in-detail-page {
+  .detail-illustrate {
+    position: relative;
+    .playTrailer {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: all 0.2s;
+      background: 0 0;
+      border: none;
+      outline: none;
+      &:hover{
+        opacity: 0.5;
+      }
+    }
+    &:hover .playTrailer {
+      opacity: 1;
+      transition: opacity 0.3s;
+      &:hover{
+        opacity: 0.8;
+      }
+    }
+    .detail-poster {
+      border-radius: 15px;
+      box-shadow: 0 0 30px 2px gray;
+    }
+  }
+  .detail-content {
+    position: relative;
+    color: rgba(220, 220, 220);
+    .detail-text {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 0 20px;
+      .btn-buyTicket {
+        padding: 0 7.5px 4px;
+        letter-spacing: 1.5px;
+        width: 14%;
+        height: 47px;
+        margin-top: 15px;
+        font-size: 27px;
+        border-radius: 13px;
+        transition: all 0.5s;
+        text-shadow: 0 1.5px black;
+        &:hover {
+          width: 151px;
+        }
+        &:focus{
+          box-shadow: none;
+        }
+      }
+    }
+  }
+  .detail-evaluate {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    .evaluate-circle {
+      position: relative;
+      height: 140px;
+      width: 140px;
+      margin: 0 auto;
+      border-radius: 50%;
+      background-color: #c02231;
+      box-shadow: 0 0 60px 12px black inset;
+      .circle-border {
+        height: 140px;
+        width: 140px;
+        border: 9px solid #3a3a3a;
+        border-radius: 50%;
+      }
+      .circle-hidden{
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 140px;
+        width: 140px;
+        border-radius: 50%;
+        border: 9px solid #3a3a3a;
+        clip: rect(0, 70px, 140px, 0);
+        z-index: 2;
+      }
+      .haft-circle {
+        position: absolute;
+        top: 0.2px;
+        left: 0.6px;
+        height: 139px;
+        width: 139px;
+        border-radius: 50%;
+        border: 7px solid rgba(220, 220, 220);
+        clip: rect(0, 69.5px, 139px, 0);
+      }
+      .residual-circle{
+        position: absolute;
+        top: 0.2px;
+        left: 0.6px;
+        height: 139px;
+        width: 139px;
+        border-radius: 50%;
+        border: 7px solid rgba(220, 220, 220);;
+        clip: rect(0, 69.5px, 139px, 0);
+        z-index: 3;
+      }
+      .evaluate-index {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        font-size: 56px;
+        line-height: 140px;
+        color: rgba(220, 220, 220);
+      }
+    }
+    .evaluate-stars{
+      .icon-star{
+        color: #dc3545;
+        font-size: 21px;
+      }
+    }
+    .count-evaluate{
+      color: rgba(220, 220, 220);
+    }
+  }
+}

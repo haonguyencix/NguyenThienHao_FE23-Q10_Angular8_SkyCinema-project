@@ -1,0 +1,96 @@
+<!-- Begin home tools -->
+<div class="homeTools">
+  <div class="row buySelect">
+    <!-- Select movie ****************************** -->
+    <mat-form-field class="select-form mr-4">
+      <mat-label class="select-label">Select movie</mat-label>
+      <mat-select>
+
+        <ng-container *ngIf="movies != null">
+          <mat-option class="select-option" *ngFor="let film of movies" [value]="film.MaPhim"
+            (click)="movieIsSelected(film.MaPhim)">
+            {{film.TenPhim}}
+          </mat-option>
+        </ng-container>
+
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Select theatre ****************************** -->
+    <mat-form-field class="select-form mr-4">
+      <mat-label class="select-label">Select theatre</mat-label>
+      <mat-select>
+
+        <!-- Select movie has a value property, select theatre is enabled -->
+        <ng-container *ngIf="selectMovieStatus && theatreGroups != null; else alert">
+          <mat-optgroup *ngFor="let group of theatreGroups" [label]="group.TheatreGroupName"
+            [disabled]="group.disabled">
+            <img class="ml-2 mb-2" [src]="group.logo" width="20px" height="20px">
+
+            <ng-container *ngIf="group.theatreArray != null">
+              <mat-option *ngFor="let theatre of group.theatreArray" [value]="theatre.TheatreId"
+                (click)="theatreIsSelected(group.logo, theatre)">
+                {{theatre.name}}
+              </mat-option>
+            </ng-container>
+
+
+          </mat-optgroup>
+        </ng-container>
+
+        <!-- Select movie non value property, then alert -->
+        <ng-template #alert>
+          <mat-option class="text-danger" disabled>
+            Please select movie
+          </mat-option>
+        </ng-template>
+
+      </mat-select>
+    </mat-form-field>
+
+
+    <!-- Seclect date ****************************** -->
+    <mat-form-field class="select-form mr-4">
+      <mat-label class="select-label">Select date</mat-label>
+      <mat-select>
+
+        <ng-container *ngIf="selectMovieStatus && selectTheatreStatus && movie.LichChieu != null; else alert1">
+          <mat-option *ngFor="let item of movie.LichChieu; let index = index" [value]="item.MaLichChieu"
+            (click)="dateIsSelected(item.NgayChieuGioChieu, item.MaLichChieu)">
+            {{item.NgayChieuGioChieu | date: "MMM dd"}}
+          </mat-option>
+        </ng-container>
+
+        <ng-template #alert1>
+          <mat-option class="text-danger" disabled>
+            Please select movie and theatre
+          </mat-option>
+        </ng-template>
+
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Select showtime ****************************** -->
+    <mat-form-field class="select-form">
+      <mat-label class="select-label">Select showtime</mat-label>
+      <mat-select>
+
+        <ng-container
+          *ngIf="selectMovieStatus && selectTheatreStatus && selectDateStatus; else alert2">
+          <mat-option [value]="showtimeId"
+            (click)="goToTicketBoxPage(showtimeId)">
+            {{isDate | date: "hh:mm"}}
+          </mat-option>
+        </ng-container>
+
+        <ng-template #alert2>
+          <mat-option class="text-danger" disabled>
+            Please select movie, theatre and date
+          </mat-option>
+        </ng-template>
+
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>
+<!-- End home tools -->

@@ -1,0 +1,40 @@
+.background-carousel {
+  box-shadow: 0 0 40px 5px gray;
+  border-radius: 0 0 20px 20px;
+  width: 100%;
+  .carousel {
+    padding: 88px 3% 2%;
+    width: 100%;
+    position: relative;
+    .carousel-inner {
+      border-radius: 18px;
+    }
+    .carousel-indicators {
+      margin-bottom: 55px;
+      li {
+        width: 35px;
+        height: 5px;
+      }
+    }
+    .carousel-control-prev {
+      position: absolute;
+      top: 54%;
+      left: 0;
+      transform: translateY(-50%);
+      .carousel-control-prev-icon {
+        width: 50px;
+        height: 50px;
+      }
+    }
+    .carousel-control-next {
+      position: absolute;
+      top: 54%;
+      right: 0;
+      transform: translateY(-50%);
+      .carousel-control-next-icon {
+        width: 50px;
+        height: 50px;
+      }
+    }
+  }
+}

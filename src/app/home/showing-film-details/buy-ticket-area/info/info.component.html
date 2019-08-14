@@ -1,0 +1,36 @@
+<div class="info-in-detail-page p-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 font-weight-bold">
+                <p>Release date:</p>
+                <p>Genre:</p>
+                <p>Director:</p>
+                <p>Actor/Actress:</p>
+                <p>Format:</p>
+                <p>Made in:</p>
+                <p>Evaluate:</p>
+                <p>Description:</p>
+            </div>
+            <div class="col-md-9">
+                <p>{{filmDetail.NgayKhoiChieu | date: "MMM dd, yyyy"}}</p>
+                <p>Action, Science fiction</p>
+                <p>Zack Snyder</p>
+                <p>Ben Affleck, Henry Cavill, Gal Gadot, Ezra Miller, Jason Momoa</p>
+                <p>2D/Digital/3D</p>
+                <p>United State</p>
+                <div class="evaluate-stars d-flex mt-2 mb-3">
+                        <i class="fa fa-star icon-star" *ngFor="let star of fullStarArr"></i>
+                        <i class="fa fa-star-o icon-star" *ngFor="let star of emptyStarArr"></i>
+                </div>
+                <p>{{filmDetail.MoTa}}</p>
+            </div>
+        </div>
+        <p class="font-weight-bold">Trailer:</p>
+        <div class="col-md-12 mx-auto p-0">
+            <iframe style="border-radius: 15px" width="639" height="360" [src]="trailerInDetailPage | safe"
+                frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+</div>

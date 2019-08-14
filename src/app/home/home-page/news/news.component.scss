@@ -1,0 +1,60 @@
+.news {
+  margin: 90px 0;
+  .container {
+    padding: 0 4%;
+    #arr1{
+        height: 405px;
+    }
+    #arr2 {
+      height: 340px;
+    }
+    .new-cards {
+      #arr3 {
+        background-color: rgba(0, 0, 0, 0.5);
+        box-shadow: none;
+        #arr3-img{
+          width: 70px;
+        }
+        #arr3-title{
+          font-family: Klavika;
+          color: gainsboro;
+        }
+      }
+      .card {
+        margin: 12px;
+        background-color: gainsboro;
+        box-shadow: 0 0 45px 2px black inset;
+        border-radius: 15px;
+        border: none;
+        transition: all 0.3s;
+        cursor: pointer;
+        &:hover {
+          background-color: rgba(210, 210, 210);
+          box-shadow: 0 0px 20px 1px black inset;
+        }
+        &:active {
+          transform: scale(0.98);
+        }
+        &:hover .card-img-top {
+          transform: scale(0.98);
+        }
+        .card-img-top {
+          transition: all 0.3s;
+          border-radius: 15px;
+        }
+        .card-body {
+          transition: all 0.3s;
+          color: black;
+          padding: 14px;
+          .card-title {
+            font-family: Klavika-Bold;
+            font-size: 18px;
+          }
+          .card-text {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}

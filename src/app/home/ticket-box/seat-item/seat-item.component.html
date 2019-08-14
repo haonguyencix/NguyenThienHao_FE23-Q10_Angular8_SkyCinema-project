@@ -1,0 +1,18 @@
+<button class="btn btnSeat" (mouseover)="hoverStatus = true" (mouseleave)="hoverStatus = false"
+    [ngClass]="{'seatSold': seat.DaDat, 'seatBooking': BookingStatus}" [disabled]="seat.DaDat" (click)="tick()">
+
+    <ng-container *ngIf="BookingStatus || hoverStatus; else DaDat">
+        {{ (seat.TenGhe === '10')? 'A' + 10: '' || (seat.TenGhe[0] === '0')? 'A' + (seat.TenGhe[1]): ''
+        || (seat.TenGhe === '20')? 'B' + 10: '' || (seat.TenGhe[0] === '1')? 'B' + (seat.TenGhe[1]): ''
+        || (seat.TenGhe === '30')? 'C' + 10: '' || (seat.TenGhe[0] === '2')? 'C' + (seat.TenGhe[1]): ''
+        || (seat.TenGhe === '40')? 'D' + 10: '' || (seat.TenGhe[0] === '3')? 'D' + (seat.TenGhe[1]): ''
+        || (seat.TenGhe === '50')? 'E' + 10: '' || (seat.TenGhe[0] === '4')? 'E' + (seat.TenGhe[1]): ''
+        || (seat.TenGhe === '60')? 'F' + 10: '' || (seat.TenGhe[0] === '5')? 'F' + (seat.TenGhe[1]): ''
+        }}
+    </ng-container>
+
+    <ng-template #DaDat>
+        {{ (seat.DaDat)? 'X': '' }}
+    </ng-template>
+
+</button>

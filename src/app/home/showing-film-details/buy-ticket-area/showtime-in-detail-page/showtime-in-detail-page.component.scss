@@ -1,0 +1,116 @@
+.showtime-in-detail-page {
+  border-radius: 20px;
+  box-shadow: 0 0 30px 2px gray;
+  width: 100%;
+  padding: 2%;
+  background-color: rgba(0, 0, 0, 0.5);
+  .theatre-tabs {
+    padding-right: 6%;
+    .theatre-tab {
+      cursor: pointer;
+      opacity: 0.4;
+      transition: all 0.7s;
+      img {
+        border-radius: 50%;
+      }
+      &:hover {
+        opacity: 1;
+      }
+    }
+    .active {
+      opacity: 1;
+      img {
+        border-radius: 50%;
+        box-shadow: 0 0 40px 5px gray;
+      }
+    }
+  }
+  .time-line {
+    .time {
+      border-radius: 10px;
+      cursor: pointer;
+      width: 65px;
+      height: 44px;
+      line-height: 44px;
+      letter-spacing: -1px;
+      font-size: 19px;
+      opacity: 0.4;
+      transition: all .5s;
+      margin-bottom: 9px;
+      font-weight: 500;
+      color: black;
+      background-color: rgba(220, 220, 220);
+      &:hover{
+        opacity: 1;
+      }
+    }
+    .active {
+      opacity: 1;
+      box-shadow: 0 0 40px 5px gray;
+    }
+    .sat{
+      color: #008dd3;
+    }
+    .sun{
+      color: #dc3545;
+    }
+  }
+  .theatre-tabs-content {
+    overflow-y: auto;
+    width: 97%;
+    &::-webkit-scrollbar {
+      background-color: transparent;
+      width: 7px;
+      border-radius: 15px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba(130, 130, 130, 0.7);
+      border-radius: 15px;
+      cursor: pointer;
+      &:hover {
+        background-color: rgba(130, 130, 130, 1);
+      }
+    }
+    .theatres {
+      height: 365px;
+      .card:not(:last-child) {
+        margin-bottom: 10px;
+      }
+      .card {
+        border-radius: 15px;
+        padding: 5px 0;
+        max-width: 98%;
+        border: none;
+        cursor: pointer;
+        color: rgba(220, 220, 220);
+        background-color: transparent;
+        .theatre {
+          .img {
+            border-radius: 15px;
+          }
+          .card-body {
+            padding: 7px 0;
+            letter-spacing: -0.5px;
+            .card-title {
+              margin: 0;
+            }
+            .card-text {
+              margin: 0;
+              color: rgba(190, 190, 190);
+            }
+          }
+        }
+        .showtime {
+          font-size: 24px;
+          letter-spacing: -1.5px;
+          color: #0DE8E5;
+          transition: color 0.5s;
+          font-weight: 400;
+          &:hover {
+            color: #dc3545;
+          }
+        }
+      }
+    }
+  }
+}

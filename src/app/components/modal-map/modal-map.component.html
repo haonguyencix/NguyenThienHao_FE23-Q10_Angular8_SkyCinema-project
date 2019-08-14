@@ -1,0 +1,16 @@
+<!-- Modal -->
+<div class="modal modal-map fade" id="modal-map" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+    aria-hidden="true" (click)="closeMap()">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body p-0">
+                <img class="close" data-dismiss="modal" src="assets/img/lightbox-close.png" alt="">
+                <ng-container *ngIf="mapInModal != ''">
+                    <iframe width="853" height="480" [src]="mapInModal | safe" frameborder="0" style="border: 0"
+                        allowfullscreen>
+                    </iframe>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>

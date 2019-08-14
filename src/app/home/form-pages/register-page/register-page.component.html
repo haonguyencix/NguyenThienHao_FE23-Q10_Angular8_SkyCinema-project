@@ -1,0 +1,87 @@
+<div class="register-page">
+    <div class="container pt-5">
+        <div class="row">
+            <div class="register-form col-sm-5 mx-auto">
+                <h2 class="text-center">REGISTER NEW ACCOUNT</h2>
+                <form autocomplete="off" #registerForm="ngForm" (ngSubmit)="register(registerForm.value)">
+                    <div class="form-group">
+                        <input type="text" class="form-control px-0" placeholder="Username" name="username"
+                            #UserName="ngModel" ngModel required>
+
+                        <div *ngIf="UserName.errors && (UserName.dirty || UserName.touched)">
+                            <!-- Empty? -->
+                            <div *ngIf="UserName.errors.required" class="text-danger">
+                                Please enter your username !
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" minlength="8" class="form-control px-0" placeholder="Password"
+                            name="password" #Password="ngModel" ngModel required>
+                        <div *ngIf="Password.errors && (Password.dirty || Password.touched)">
+                            <!-- Empty? -->
+                            <div *ngIf="Password.errors.required" class="text-danger">
+                                Please enter your password !
+                            </div>
+
+                            <!-- Enough length? -->
+                            <div *ngIf="Password.errors.minlength" class="text-danger">
+                                You should enter your password at least 8 words !
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control px-0" placeholder="Full name" name="fullname"
+                            #FullName="ngModel" ngModel required>
+
+                        <div *ngIf="FullName.errors && (FullName.dirty || FullName.touched)">
+                            <!-- Empty? -->
+                            <div *ngIf="FullName.errors.required" class="text-danger">
+                                Please enter your full name !
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" class="form-control px-0"
+                            placeholder="Email" name="email" ngModel #Email="ngModel" required>
+
+                        <div *ngIf="Email.errors && (Email.dirty || Email.touched)">
+                            <!-- Empty? -->
+                            <div *ngIf="Email.errors.required" class="text-danger">
+                                Please enter your email !
+                            </div>
+
+                            <!-- Correct form? -->
+                            <div *ngIf="Email.errors.pattern" class="text-danger">
+                                Incorrect form !
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control px-0" placeholder="Phone number" name="phone" ngModel
+                            #Phone="ngModel" required>
+
+                        <div *ngIf="Phone.errors && (Phone.dirty || Phone.touched)">
+                            <!-- Empty? -->
+                            <div *ngIf="Phone.errors.required" class="text-danger">
+                                Please enter your phone number !
+                            </div>
+                        </div>
+                    </div>
+
+                    <button mat-button type="submit" class="btn btn-reg my-2 w-100"
+                        [disabled]="!registerForm.valid">REGISTER
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="history-tab">
+    <h2 class="text-center mb-4">BOOKING HISTORY</h2>
+    <ng-container *ngIf="historyArray.length > 0; else notBookedYet">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Movie</th>
+                    <th>Booking time</th>
+                    <th>Ticket ID</th>
+                    <th>Ticket type</th>
+                    <th>Ticket price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of historyArray | paginate: { itemsPerPage: 5, currentPage: pageIndex }, let index = index"
+                    [ngClass]="{bgTr: (index + 1) % 2 === 0}">
+                    <td>{{item.TenPhim}}</td>
+                    <td>{{item.NgayDat | date: "MMM dd, yyyy"}} at {{item.NgayDat | date: "hh:mm:ss"}}</td>
+                    <td>{{item.MaGhe}}</td>
+                    <td>Casual</td>
+                    <td>{{item.GiaVe | number}}₫</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <!-- ngx-pagination -->
+        <pagination-controls class="my-pagination" (pageChange)="pageIndex=$event"></pagination-controls>
+
+    </ng-container>
+    
+    <ng-template #notBookedYet>
+        <div class="empty-history text-center my-5">You haven't booked any ticket yet !</div>
+    </ng-template>
+
+</div>

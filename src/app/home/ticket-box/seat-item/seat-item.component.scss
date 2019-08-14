@@ -1,0 +1,36 @@
+.btnSeat {
+  background-color: #00334d;
+  border: 2px solid gray;
+  margin: 5px;
+  width: 32px;
+  height: 32px;
+  line-height: 20px;
+  font-size: 14px;
+  padding: 0;
+  letter-spacing: -0.7px;
+  &:hover {
+    color: rgba(210, 210, 210);
+  }
+  &:focus {
+    box-shadow: none;
+  }
+}
+.seatSold {
+  background-color: #c6c6c6;
+  border: 2px solid white;
+  border-radius: 5px;
+  cursor: no-drop;
+  &:hover {
+    border: 2px solid white;
+    color: black;
+    opacity: 0.6;
+  }
+}
+.seatBooking {
+  background-color: #008fbe;
+  color: rgba(210, 210, 210);
+  border: 2px solid #c6c6c6;
+  &:hover {
+    border: 2px solid #c6c6c6;
+  }
+}

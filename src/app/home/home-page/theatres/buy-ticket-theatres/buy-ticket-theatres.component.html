@@ -1,0 +1,56 @@
+<div class="buy-ticket-theatres">
+    <div class="row">
+
+        <div class="col-md-1">
+            <div class="theatre-tabs">
+                <div class="theatre-tab" *ngFor="let logo of theatresArray; let index = index"
+                    [ngClass]="{'active': isActivated === index}" (click)="changeTheatresTab(index, logo.logo)">
+                    <img [src]="logo.logo" width="60px" height="60px">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div [ngSwitch]="isChanged" class="theatre-tabs-content">
+                <ng-container *ngFor="let theatres of theatresArray">
+                    <div class="theatres" *ngSwitchCase="theatres.id">
+                        <div class="card" *ngFor="let item of theatres.theatreArray; let index = index"
+                            [ngClass]="{'active': isTheatreActivated === index}" (click)="changeTheatreTab(index, item)">
+                            <div class="theatre row no-gutters">
+                                <div class="col-md-3 text-center">
+                                    <img [src]="item.img" class="img" width="60px" height="60px">
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            {{ (item.name.length > 25)? (item.name | shortcut:25): (item.name) }}
+                                        </h5>
+                                        <p class="card-text">
+                                            {{ (item.addr.length > 35)? (item.addr | shortcut:35): (item.addr) }}
+                                        </p>
+                                        <ng-container *ngIf="item.map != ''">
+                                            <p class="card-map" data-toggle="modal" data-target="#modal-map"
+                                                (click)="clickMap(item.map)">
+                                                [Google map]
+                                            </p>
+                                        </ng-container>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+
+        <div class="col-md-7">
+            <div class="film-tabs">
+                <div class="films" *ngFor="let item of filmList; let first = first; let last = last"
+                    [ngClass]="{'first-card': first, 'last-card': last}">
+                    <app-film-item [film]="item" (sharingDataEvent)="sharingDataEvent($event)"></app-film-item>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

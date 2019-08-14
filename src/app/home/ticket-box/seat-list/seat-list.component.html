@@ -1,0 +1,126 @@
+<div class="buy-ticket-in-ticket-box pt-3 row">
+
+    <div class="col-md-7 seat-list text-center">
+        <div class="screen">SCREEN</div>
+        <!-- Entrance -->
+        <div class="entrance">
+            <img class="entrance-img" src="assets/img/entrance.png" width="30px" height="45px">
+        </div>
+        <!-- Casual seat -->
+        <ng-container *ngIf="seatList != null">
+            <ng-container *ngFor="let item of seatList.DanhSachGhe; let index = index">
+                <app-seat-item [seat]="item" (tickEvent)="tickEvent($event)"></app-seat-item>
+                <!-- Way -->
+                <button disabled *ngIf="(index + 6) % 10 === 0" class="btn btnWay">V</button>
+                <br *ngIf="(index + 1) % 10 === 0">
+            </ng-container>
+        </ng-container>
+        <!-- Exit -->
+        <img class="mt-2" src="assets/img/exit.png" width="50px" height="50px">
+
+        <div class="row">
+            <div class="col-md-6 offset-md-3 d-flex justify-content-between note pt-2">
+                <div *ngFor="let note of noteArray">
+                    <button class="btn btn-note p-0"
+                        [ngStyle]="{'background-color': note.BgColorNote, 'border': note.BorderNote}">
+                        {{note.NoteContent}}
+                    </button>
+                    <p class="text-white text-center">{{note.StatusNote}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-5 buy-ticket-info">
+
+        <!-- Film detail area -->
+        <div class="card mb-4" *ngIf="filmDetail != null">
+            <div class="film row no-gutters">
+                <div class="col-md-3 text-center">
+                    <img [src]="filmDetail.HinhAnh" class="card-img" width="67px" height="90px">
+                </div>
+                <div class="col-md-9">
+                    <div class="card-body">
+                        <h5 class="card-title">{{filmDetail.TenPhim}}</h5>
+                        <p class="card-text"><small>129 min - SkyCine 9.6 - 8.3 IMDb</small></p>
+                        <div class="d-flex">
+                            <div class="col-md-2 p-0">
+                                <img class="card-2d" src="assets/img/2d.png">
+                            </div>
+                            <div class="col-md-10 mt-2">
+                                <ng-container *ngIf="isDate != 'Today'; else today">
+                                    <p class="card-text">Session: <span>{{isDate | date: 'hh:mm'}}</span> -
+                                        {{isDate | date: 'MMM dd'}}
+                                    </p>
+                                </ng-container>
+                                <ng-template #today>
+                                    <ng-container *ngIf="filmDetail.LichChieu != null">
+                                        <div class="mr-3" *ngFor="let item of filmDetail.LichChieu; let i = index">
+                                            <ng-container *ngIf="i === 0">
+                                                <p class="card-text">
+                                                    Session:
+                                                    <span>{{item.NgayChieuGioChieu | date: "hh:mm"}}</span> -
+                                                    {{isDate}}
+                                                </p>
+                                            </ng-container>
+                                        </div>
+                                    </ng-container>
+                                </ng-template>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Theatre information area -->
+        <div class="card mb-4">
+            <div class="row no-gutters">
+                <div class="col-md-3 text-center">
+                    <img [src]="isLogo" width="67px" height="67px" class="card-img">
+                </div>
+                <div class="col-md-9">
+                    <div class="card-body text-left">
+                        <h5 class="card-title m-0">{{isTheatreInfo.name}}</h5>
+                        <p class="card-text"><small>{{isTheatreInfo.addr}}</small></p>
+                        <p class="card-text">Screen: <span>5</span> - Seat(s):
+                            <ng-container *ngIf="bookedList != null">
+                                <span *ngFor="let item of bookedList; let isFirst = first">
+                                    <span *ngIf="!isFirst" style="color: rgb(210, 210, 210); font-size: 16px">
+                                        ,
+                                    </span>
+                                    {{ (item.TenGhe === '10')? 'A' + 10: '' || (item.TenGhe[0] === '0')? 'A' + (item.TenGhe[1]): ''
+                                    || (item.TenGhe === '20')? 'B' + 10: '' || (item.TenGhe[0] === '1')? 'B' + (item.TenGhe[1]): ''
+                                    || (item.TenGhe === '30')? 'C' + 10: '' || (item.TenGhe[0] === '2')? 'C' + (item.TenGhe[1]): ''
+                                    || (item.TenGhe === '40')? 'D' + 10: '' || (item.TenGhe[0] === '3')? 'D' + (item.TenGhe[1]): ''
+                                    || (item.TenGhe === '50')? 'E' + 10: '' || (item.TenGhe[0] === '4')? 'E' + (item.TenGhe[1]): ''
+                                    || (item.TenGhe === '60')? 'F' + 10: '' || (item.TenGhe[0] === '5')? 'F' + (item.TenGhe[1]): ''
+                                    }}
+                                </span>
+                            </ng-container>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Result of buying ticket -->
+        <div class="result mb-4">
+            <div class="row">
+                <div class="col-md-6 pr-0 border-right text-left">
+                    <p class="result-title">TOTAL TICKET PRICE</p>
+                    <p class="result-content"><span>{{total | number}}</span> VND</p>
+                </div>
+                <div class="col-md-6 pl-0 text-right">
+                    <p class="result-title">TIMMING THRESHOLD</p>
+                    <p class="result-content"><span>{{minutes}}:{{seconds}}</span></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Button buying ticket -->
+        <button mat-button class="btn btn-danger btn-continue" (click)="continue()">Continue</button>
+
+    </div>
+
+</div>

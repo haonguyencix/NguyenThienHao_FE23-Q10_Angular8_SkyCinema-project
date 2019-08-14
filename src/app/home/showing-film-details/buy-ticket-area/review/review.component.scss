@@ -1,0 +1,255 @@
+.review {
+  .review-click {
+    line-height: 42px;
+    box-shadow: 0 0 10px gray;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.9);
+    cursor: pointer;
+    .thinking {
+      color: rgba(190, 190, 190);
+      font-size: 16px;
+      margin: 0;
+    }
+    .icon-star {
+      color: rgba(220, 53, 69, 0.75);
+      font-size: 21px;
+    }
+  }
+  .reviews-area{
+    height: 608px;
+    padding: 0 15px 5px;
+    overflow: auto;
+    &::-webkit-scrollbar {
+      background-color: transparent;
+      width: 7px;
+      border-radius: 15px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba(130, 130, 130, 0.7);
+      border-radius: 15px;
+      cursor: pointer;
+      &:hover {
+        background-color: rgba(130, 130, 130, 1);
+      }
+    }
+    .review-area {
+      position: relative;
+      line-height: 42px;
+      box-shadow: 0 0 10px gray;
+      border-radius: 10px;
+      background-color: rgba(0, 0, 0, 0.7);
+      .close {
+        position: absolute;
+        opacity: 0.8;
+        top: -11%;
+        right: -2%;
+        cursor: pointer;
+        &:hover{
+          opacity: 0.65;
+        }
+        &:active {
+          transform: scale(0.95);
+          opacity: 0.5;
+        }
+      }
+      .thinking {
+        color: gainsboro;
+        font-size: 16px;
+        margin: 0;
+      }
+      .line {
+        height: 1px;
+        width: 100%;
+        background-color: gray;
+        border-radius: 15px;
+      }
+      .interaction {
+        .like {
+          transition: all 0.2s;
+          input {
+            display: none;
+            &:checked + label {
+              &:before {
+                content: "\f004";
+                color: #dc3545;
+                font-family: FontAwesome;
+              }
+            }
+          }
+          label {
+            cursor: pointer;
+            &:active {
+              transform: scale(0.95);
+            }
+            &:before {
+              content: "\f08a";
+              font-size: 18px;
+              font-family: FontAwesome;
+              display: inline-block;
+              color: gainsboro;
+            }
+          }
+        }
+        .edit{
+          color: gray;
+          opacity: 0.7;
+          cursor: pointer;
+          &:hover{
+            opacity: 0.8;
+          }
+          &:active{
+            text-decoration: underline;
+            transform: scale(0.95);
+            opacity: 0.7;
+          }
+        }
+      }
+      .point {
+        color: #0de8e5;
+        font-size: 24px;
+      }
+      .avatar {
+        position: relative;
+        .div-icon {
+          position: absolute;
+          right: -50%;
+          bottom: -15%;
+          color: gainsboro;
+          line-height: 17px;
+          background-color: #3b5998;
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          border: 2px solid black;
+          .icon {
+            color: gainsboro;
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+}
+.modal {
+  .modal-content {
+    padding: 4%;
+    border-radius: 15px;
+    border: none;
+    position: relative;
+    box-shadow: 0 0 20px 1px gray;
+    background-color: rgba(0, 0, 0, 0.85);
+    .modal-header {
+      border-bottom: none;
+      .rating {
+        .half {
+          &:before {
+            content: "\f089";
+            position: absolute;
+          }
+        }
+        border: none;
+        float: left;
+        > {
+          input {
+            display: none;
+          }
+          label:before {
+            margin: 1px;
+            font-size: 32px;
+            font-family: FontAwesome;
+            display: inline-block;
+            content: "\f005";
+          }
+          label {
+            color: rgba(210, 210, 210, 0.8);
+            float: right;
+            margin: 0;
+          }
+          input:checked ~ label {
+            color: rgba(220, 53, 69, 1);
+          }
+        }
+        &:not(:checked) > label:hover {
+          color: rgba(220, 53, 69, 0.75);
+          ~ label {
+            color: rgba(220, 53, 69, 0.75);
+          }
+        }
+        > {
+          input:checked {
+            + label:hover,
+            ~ label:hover {
+              color: rgba(220, 53, 69, 0.75);
+            }
+          }
+          label:hover ~ input:checked ~ label,
+          input:checked ~ label:hover ~ label {
+            color: rgba(220, 53, 69, 0.75);
+          }
+        }
+      }
+      .star-point {
+        color: gainsboro;
+        margin: 0;
+        line-height: 50px;
+      }
+    }
+    .close {
+      position: absolute;
+      opacity: 0.8;
+      top: -5%;
+      right: -2%;
+      cursor: pointer;
+      &:hover {
+        transform: scale(0.95);
+        opacity: 0.65;
+      }
+    }
+    .modal-body {
+      .btn-evaluate {
+        border-radius: 6px;
+        height: 42px;
+        font-size: 24px;
+        background-color: #00334d;
+        color: rgba(220, 220, 220);
+        font-family: Klavika-Bold;
+        &:focus {
+          box-shadow: none;
+        }
+      }
+      .input-comment {
+        appearance: none;
+        padding: 20px;
+        border-radius: 8px;
+        width: 100%;
+        background-color: black;
+        border: 1px solid gray;
+        resize: none;
+        font-size: 18px;
+        color: gainsboro;
+        transition: all 0.3s ease-in-out;
+        box-shadow: inset 0 0 5px 1px gray;
+        &::-webkit-scrollbar {
+          background-color: rgba(130, 130, 130, 0.4);
+          width: 7px;
+          border-radius: 15px;
+        }
+        &::-webkit-scrollbar-thumb {
+          background-color: rgba(130, 130, 130, 0.7);
+          border-radius: 15px;
+          cursor: pointer;
+          &:hover {
+            background-color: rgba(130, 130, 130, 1);
+          }
+        }
+        &:focus {
+          outline: none;
+          border: 1px solid gainsboro;
+        }
+      }
+      .text-alert {
+        color: #0de8e5;
+      }
+    }
+  }
+}

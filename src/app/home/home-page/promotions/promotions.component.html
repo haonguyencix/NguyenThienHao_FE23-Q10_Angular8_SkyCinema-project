@@ -1,0 +1,35 @@
+<div class="promotions">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="theatre-tabs d-flex justify-content-between mb-4">
+                    <div class="theatre-tab" *ngFor="let logo of theatresArray; let index = index"
+                        [ngClass]="{'active': isActivated === index}" (click)="changeTheatreTab(index, logo.logo)">
+                        <img [src]="logo.logo" width="60px" height="60px">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div [ngSwitch]="isChanged" class="theatre-tabs-content">
+                    <ng-container *ngFor="let item of theatresArray">
+                        <div class="promotion-cards" *ngSwitchCase="item.id">
+                            <owl-carousel [options]="carouselOptions" [items]="item.promotionArray"
+                                [carouselClasses]="['owl-theme', 'row', 'sliding']">
+                                <ng-container *ngIf="item.promotionArray !=null">
+                                    <div class="card-img item" *ngFor="let card of item.promotionArray">
+                                        <img class="img" [src]="card.img">
+                                    </div>
+                                </ng-container>
+                            </owl-carousel>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

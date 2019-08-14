@@ -1,0 +1,19 @@
+<!--Begin item -->
+<div class="showtime-item card">
+    <div class="filmCard">
+        <div class="filmCard_overlay"></div>
+        <img class="card-img-top" [src]="commingFilm.filmImg" height="300px">
+        <div class="filmDetail">
+            <button class="playTrailer">
+                <img src="/assets/img/play-video.png">
+            </button>
+        </div>
+    </div>
+    <div class="card-body p-2">
+        <div class="info text-center">
+            <h4 class="info-title">{{commingFilm.filmName}}</h4>
+            <p class="m-0">Release: {{commingFilm.released}}</p>
+        </div>
+    </div>
+</div>
+<!-- End item -->

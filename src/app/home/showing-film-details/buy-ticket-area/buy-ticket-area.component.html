@@ -1,0 +1,35 @@
+<div class="buy-ticket-area">
+
+    <!-- Nav tab -->
+    <div class="tabs-area d-flex justify-content-between mx-auto">
+        <div class="tab-area" [ngClass]="{'active': isActivated === 'st'}" (click)="changeTab('st')">
+            Showtime
+        </div>
+        <div class="tab-area" [ngClass]="{'active': isActivated === 'if'}" (click)="changeTab('if')">
+            Information
+        </div>
+        <div class="tab-area" [ngClass]="{'active': isActivated === 'rv'}" (click)="changeTab('rv')">
+            Review
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 text-white">
+
+            <!-- Tabs -->
+            <div [ngSwitch]="isChanged">
+                <div *ngSwitchCase="'st'">
+                    <app-showtime-in-detail-page></app-showtime-in-detail-page>
+                </div>
+                <div *ngSwitchCase="'if'">
+                    <app-info></app-info>
+                </div>
+                <div *ngSwitchCase="'rv'">
+                    <app-review></app-review>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

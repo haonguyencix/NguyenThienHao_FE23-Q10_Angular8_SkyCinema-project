@@ -1,0 +1,32 @@
+.register-page {
+    padding: 82px 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    .register-form {
+      padding: 25px;
+      color: rgba(220, 220, 220);
+      box-shadow: 0 0 40px 2px gray;
+      border-radius: 20px;
+      .form-control{
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid rgba(220, 220, 220);
+        color: rgba(220, 220, 220);
+        border-radius: 0;
+        &:focus {
+          box-shadow: none;
+        }
+      }
+      .btn-reg {
+        border-radius: 6px;
+        height: 42px;
+        font-size: 24px;
+        background-color: #00334D;
+        color: rgba(220, 220, 220);
+        font-family: Klavika-Bold;
+        &:focus{
+          box-shadow: none;
+        }
+      }
+    }
+  }
+  

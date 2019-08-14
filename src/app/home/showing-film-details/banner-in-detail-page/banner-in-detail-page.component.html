@@ -1,0 +1,56 @@
+<ng-container *ngIf="showingFilm">
+    <div class="banner-in-detail-page">
+        <div class="row">
+            <!-- Detail illustrate -->
+            <div class="col-md-8 offset-md-1">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="detail-illustrate">
+                            <img class="detail-poster" [src]="showingFilm.HinhAnh" width="220px" height="335px">
+                            <ng-container *ngIf="showingFilm.Trailer != '' && showingFilm != null">
+                                <button class="playTrailer" data-toggle="modal" data-target="#modal-trailer"
+                                    (click)="clickPlayButton()">
+                                    <img src="/assets/img/play-video.png">
+                                </button>
+                            </ng-container>
+                        </div>
+                    </div>
+                    <div class="col-md-8 detail-content">
+                        <div class="detail-text">
+                            <h1>{{showingFilm.TenPhim}}</h1>
+                            <p class="my-1">Release Date: {{showingFilm.NgayKhoiChieu | date: "MMM dd, yyyy"}}</p>
+                            <p class="my-1">129 min - 8.3 IMDb - 2D/Digital/3D</p>
+                            <button mat-button class="btn btn-danger btn-buyTicket"
+                                (click)="srcollToBuyTicketArea()">Buy ticket</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Detail evalute -->
+            <div class="col-md-3">
+                <div class="detail-evaluate text-center">
+                    <!-- Evalute index -->
+                    <div class="evaluate-circle">
+                        <div class="circle-border"></div>
+                        <div class="circle-hidden" *ngIf="!showCircle"></div>
+                        <div class="haft-circle" *ngIf="showCircle" [ngStyle]="{'transform': 'rotate(-180deg)'}"></div>
+                        <div class="haft-circle" [ngStyle]="{'transform': circle}"></div>
+                        <div class="residual-circle" *ngIf="showCircle" [ngStyle]="{'transform': circle}"></div>
+                        <span class="evaluate-index">{{averagePoint | number: '1.0-1'}}</span>
+                    </div>
+                    <!-- Evalute stars -->
+                    <div class="evaluate-stars col-sm-12 d-flex mt-2">
+                        <i class="fa fa-star icon-star" *ngFor="let star of fullStarArr"></i>
+                        <i class="fa fa-star-o icon-star" *ngFor="let star of emptyStarArr"></i>
+                    </div>
+                    <!-- Count the number of reviwers -->
+                    <div class="count-evaluate mt-1">
+                        <span>{{isEvaluated}} people evaluated</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+<app-modal-trailer></app-modal-trailer>

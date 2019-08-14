@@ -1,0 +1,63 @@
+<div class="info-tab">
+    <h2 class="text-center">EDIT PERSONAL INFORMATION</h2>
+    <form autocomplete="off" #infoForm="ngForm" (ngSubmit)="info(infoForm.value)">
+
+        <div class="form-group">
+            <input disabled type="text" class="form-control px-0" placeholder="Username" name="username"
+                #UserName="ngModel" [ngModel]="userLogin.TaiKhoan">
+        </div>
+
+        <div class="form-group">
+            <input disabled type="password" class="form-control px-0" placeholder="Password" name="password"
+                #Password="ngModel" [ngModel]="userLogin.MatKhau">
+        </div>
+
+        <div class="form-group">
+            <input type="text" class="form-control px-0" placeholder="Full name" name="fullname" #FullName="ngModel"
+                [ngModel]="userLogin.HoTen" required>
+
+            <div *ngIf="FullName.errors && (FullName.dirty || FullName.touched)">
+                <!-- Empty? -->
+                <div *ngIf="FullName.errors.required" class="text-danger">
+                    This information must not be empty !
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" class="form-control px-0"
+                placeholder="Email" name="email" [ngModel]="userLogin.Email" #Email="ngModel" required>
+
+            <div *ngIf="Email.errors && (Email.dirty || Email.touched)">
+                <!-- Empty? -->
+                <div *ngIf="Email.errors.required" class="text-danger">
+                    This information must not be empty !
+                </div>
+                
+                <!-- Correct form? -->
+                <div *ngIf="Email.errors.pattern" class="text-danger">
+                    Incorrect form !
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <input type="text" class="form-control px-0" placeholder="Phone number" name="phone"
+                [ngModel]="userLogin.SoDT" #Phone="ngModel" required>
+
+            <div *ngIf="Phone.errors && (Phone.dirty || Phone.touched)">
+                <!-- Empty? -->
+                <div *ngIf="Phone.errors.required" class="text-danger">
+                    This information must not be empty !
+                </div>
+            </div>
+        </div>
+
+        <button mat-button type="submit" class="btn btn-reg my-2 w-100"
+            [disabled]="!infoForm.valid">UPDATE
+        </button>
+
+    </form>
+</div>

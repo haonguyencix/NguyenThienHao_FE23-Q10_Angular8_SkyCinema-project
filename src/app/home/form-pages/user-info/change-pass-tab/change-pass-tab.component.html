@@ -1,0 +1,46 @@
+<div class="change-pass-tab">
+    <h2 class="text-center">CHANGE YOUR PASSWORD</h2>
+    <form autocomplete="off" #changePassForm="ngForm" (ngSubmit)="changePass(changePassForm.value)">
+
+        <div class="form-group">
+            <input type="password" class="form-control px-0" placeholder="Current password" name="currentpass"
+                #CurrentPass="ngModel" ngModel>
+        </div>
+
+        <div class="form-group">
+            <input type="password" minlength="8" class="form-control px-0" placeholder="Enter your new password"
+                name="newpass" #NewPass="ngModel" ngModel required>
+            <div *ngIf="NewPass.errors && (NewPass.dirty || NewPass.touched)">
+                <!-- Empty? -->
+                <div *ngIf="NewPass.errors.required" class="text-danger">
+                    Password must not be empty !
+                </div>
+
+                <!-- Enough length? -->
+                <div *ngIf="NewPass.errors.minlength" class="text-danger">
+                    You should enter your password at least 8 words !
+                </div>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input type="password" minlength="8" class="form-control px-0" placeholder="Confirm your new password"
+                name="confirmpass" #ConfirmPass="ngModel" ngModel required>
+            <div *ngIf="ConfirmPass.errors && (ConfirmPass.dirty || ConfirmPass.touched)">
+                <!-- Empty? -->
+                <div *ngIf="ConfirmPass.errors.required" class="text-danger">
+                    Password must not be empty !
+                </div>
+            </div>
+        </div>
+
+        <button mat-button type="submit" class="btn btn-reg my-2 w-100" [disabled]="!changePassForm.valid">CONFIRM
+        </button>
+
+        <div class="text-footer mx-auto text-center">
+            <a class="text-forgot">Forgot your current password ?</a>
+        </div>
+
+    </form>
+</div>

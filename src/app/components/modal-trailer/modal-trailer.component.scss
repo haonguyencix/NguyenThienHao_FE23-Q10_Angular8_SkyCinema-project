@@ -1,0 +1,17 @@
+.modal-trailer{
+    .modal-content{
+        background: transparent;
+        border: none;
+        position: relative;
+        .close{
+            position: absolute;
+            top: -4%;
+            right: -9%;
+            cursor: pointer;
+            border-radius: 50%;
+            &:hover{
+                box-shadow: 0 0 40px 5px gray;
+            }
+        }
+    }
+}

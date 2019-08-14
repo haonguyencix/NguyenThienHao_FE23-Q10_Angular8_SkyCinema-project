@@ -1,0 +1,15 @@
+.playTrailer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  background: 0 0;
+  border: none;
+  outline: none;
+  opacity: 1;
+  transition: opacity 0.3s;
+  &:hover{
+    opacity: 0.8;
+  }
+}

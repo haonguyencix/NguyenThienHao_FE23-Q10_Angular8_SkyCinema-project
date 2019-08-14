@@ -1,0 +1,88 @@
+/* You can add global styles to this file, and also import other style files */
+
+$fa-font-path: "../node_modules/font-awesome/fonts";
+@import "../node_modules/font-awesome/scss/font-awesome.scss";
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: Klavika;
+}
+
+.owl-carousel {
+  margin: 0 auto;
+  .owl-nav {
+    overflow: hidden;
+    height: 0px;
+  }
+  .owl-dots {
+    .owl-dot {
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+  .btn-nav {
+    position: absolute;
+    top: 44%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 15px;
+    border: 2px solid gray;
+    padding: 4px;
+    transition: all 0.2s;
+    opacity: 0.6;
+    &:hover {
+      box-shadow: 0 0 15px 0 gray;
+      opacity: 1;
+    }
+    &:active {
+      background-color: gray;
+    }
+  }
+  .prev-slide {
+    left: -6%;
+  }
+  .next-slide {
+    right: -6%;
+  }
+}
+
+.modal-open {
+  padding: 0 !important;
+  overflow-y: auto;
+}
+
+.my-pagination {
+  text-align: center;
+  z-index: 2;
+  .ngx-pagination {
+    padding-top: 10px;
+    .current {
+      background: #00334d;
+      border-radius: 5px;
+    }
+    li {
+      a {
+        color: rgba(220, 220, 220);
+        transition: all 0.1s;
+        span {
+          outline: none;
+        }
+        &:hover {
+          background: rgba(70, 70, 70, 0.5);
+          border-radius: 5px;
+          text-decoration: none;
+        }
+        &:focus {
+          outline: none;
+        }
+        &:active {
+          transform: scale(0.8);
+        }
+      }
+    }
+  }
+}
