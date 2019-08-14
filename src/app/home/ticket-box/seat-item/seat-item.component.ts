@@ -8,6 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class SeatItemComponent implements OnInit {
 
   BookingStatus: boolean = false;
+  hoverStatus: boolean = false;
   @Output() tickEvent = new EventEmitter;
   @Input() seat;
   constructor() { }
