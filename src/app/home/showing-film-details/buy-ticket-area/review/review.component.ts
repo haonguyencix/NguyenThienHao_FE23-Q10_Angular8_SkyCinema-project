@@ -40,7 +40,7 @@ export class ReviewComponent implements OnInit {
   }
 
   isChecked(event) {
-    this.starPoint = parseInt(event.target.id, 10);
+    this.starPoint = parseInt(event.target.value, 10);
   }
 
   getParamsFromURL() {
