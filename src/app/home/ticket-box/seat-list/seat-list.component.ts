@@ -21,7 +21,6 @@ export class SeatListComponent implements OnInit {
   isTheatreInfo: any;
   isDate: any;
   filmDetail: any;
-  hoverStatus: boolean = false;
 
   noteArray: any = [
     { NoteContent: '', BgColorNote: '#00334d', BorderNote: '2px solid gray', StatusNote: "Casual" },
