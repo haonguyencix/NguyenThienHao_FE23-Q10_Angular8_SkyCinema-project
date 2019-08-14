@@ -4,7 +4,7 @@
 
     <!-- Logo/Brand -->
     <div class="navbar__logo-brand pl-5 w-25">
-      <img id="logo" src="/assets/img/main-logo.png" width="95px" height="75px">
+      <img id="logo" src="./assets/images/main-logo.png" width="95px" height="75px">
       <a id="logo-text" class="navbar-brand" routerLink="/home" href="#">Cinema</a>
     </div>
 
@@ -33,7 +33,7 @@
       <!-- Login and Sign in -->
       <ul id="navbar-nav" class="navbar-nav user-account w-25 pl-auto">
         <li class="nav-item">
-          <img class="avatar" [src]="isLogedIn? avt: '/assets/img/avatar.png'" width="35px" height="35px"
+          <img class="avatar" [src]="isLogedIn? avt: './assets/images/avatar.png'" width="35px" height="35px"
             style="border-radius: 50%; margin-top: 5px">
         </li>
 
@@ -83,11 +83,11 @@
 <!-- Back to top -->
 <div class="back-to-top" [ngClass]="{'show': showBTT}">
   <button (click)="backToTop()">
-    <img src="/assets/img/back-to-top.png" width="65px" height="65px">
+    <img src="./assets/images/back-to-top.png" width="65px" height="65px">
   </button>
 </div>
 
 <!-- Support -->
 <div class="support" [ngClass]="{'show': showSup}">
-  <img src="/assets/img/support.png" width="120px">
+  <img src="./assets/images/support.png" width="120px">
 </div>

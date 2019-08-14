@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-md-1">
                 <div class="avatar">
-                    <img [src]="isLogedIn? avt: '/assets/img/avatar.png'" width="40px" height="40px"
+                    <img [src]="isLogedIn? avt: '/assets/images/avatar.png'" width="40px" height="40px"
                         style="border-radius: 50%">
                 </div>
             </div>
@@ -24,7 +24,7 @@
     <div class="reviews-area">
         <ng-container *ngFor="let item of revArr; let index = index">
             <div class="review-area p-3 mt-4" *ngIf="item.id.split('-')[0] === filmId">
-                <img *ngIf="item.username === username" class="close" src="assets/img/lightbox-close.png"
+                <img *ngIf="item.username === username" class="close" src="assets/images/lightbox-close.png"
                     (click)="delete(item.id)">
                 <div class="row">
                     <div class="col-md-1">
@@ -96,7 +96,7 @@
                     <label class="half" for="1"></label>
                 </div>
                 <h2 class="star-point">{{starPoint}}/10 point(s)</h2>
-                <img class="close" data-dismiss="modal" src="assets/img/lightbox-close.png">
+                <img class="close" data-dismiss="modal" src="assets/images/lightbox-close.png">
             </div>
             <div class="modal-body">
                 <textarea [disabled]="!isLogedIn" (input)="str=$event.target.value" rows="2"

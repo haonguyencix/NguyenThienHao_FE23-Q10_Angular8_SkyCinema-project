@@ -26,7 +26,7 @@ export class HomeToolsComponent implements OnInit {
 
   theatreGroups: TheatreGroup[] = [
     {
-      logo: "/assets/img/logoTheatres/bhd-cineplex.png",
+      logo: "./assets/images/logoTheatres/bhd-cineplex.png",
       TheatreGroupName: "BHD Cineplex",
       theatreArray: [
         { TheatreId: "A1", name: "BHD Bitexco", addr: "L3 - Bitexco Icon 68, 2 Hải Triều, Q.1" },
@@ -38,7 +38,7 @@ export class HomeToolsComponent implements OnInit {
       ]
     },
     {
-      logo: "/assets/img/logoTheatres/cinestar.png",
+      logo: "./assets/images/logoTheatres/cinestar.png",
       TheatreGroupName: "Cinestar",
       theatreArray: [
         { TheatreId: "B1", name: "Cinestar Hai Bà Trưng", addr: "135 Hai Bà Trưng, Bến Nghé, Q.1" },
@@ -46,7 +46,7 @@ export class HomeToolsComponent implements OnInit {
       ]
     },
     {
-      logo: "/assets/img/logoTheatres/galaxy-cinema.png",
+      logo: "./assets/images/logoTheatres/galaxy-cinema.png",
       TheatreGroupName: "Galaxy Cinema",
       theatreArray: [
         { TheatreId: "C1", name: "Galaxy Huỳnh Tấn Phát", addr: "1362 Huỳnh Tấn Phát, KP1, Phú Mỹ, Q. 7" },
@@ -57,7 +57,7 @@ export class HomeToolsComponent implements OnInit {
       ]
     },
     {
-      logo: "/assets/img/logoTheatres/lotte-cinema.png",
+      logo: "./assets/images/logoTheatres/lotte-cinema.png",
       TheatreGroupName: "Lotte Cinema",
       theatreArray: [
         { TheatreId: "D1", name: "Lotte Cantavil", addr: "L7 - Cantavil Premier, Xa Lộ Hà Nội, Q.2" },
@@ -71,14 +71,14 @@ export class HomeToolsComponent implements OnInit {
       ]
     },
     {
-      logo: "/assets/img/logoTheatres/mega-gs.png",
+      logo: "./assets/images/logoTheatres/mega-gs.png",
       TheatreGroupName: "Mega GS",
       theatreArray: [
         { TheatreId: "E1", name: "Mega GS Cao Thắng", addr: "19 Cao Thắng, Q.3" }
       ]
     },
     {
-      logo: "/assets/img/logoTheatres/cgv.png",
+      logo: "./assets/images/logoTheatres/cgv.png",
       TheatreGroupName: "CGV",
       theatreArray: [
         { TheatreId: "F1", name: "CGV Vincom Landmark 81", addr: "B1 - Vincom Center Landmark 81, 772 Điện Biên Phủ, P.22, Q. Bình Thạnh, HCM" },

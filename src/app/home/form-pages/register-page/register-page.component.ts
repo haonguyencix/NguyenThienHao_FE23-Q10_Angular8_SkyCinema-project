@@ -27,7 +27,7 @@ export class RegisterPageComponent implements OnInit {
     const objUser = {
       TaiKhoan: registerForm.username,
       MatKhau: registerForm.password,
-      SSID: './assets/img/user-avt.jpg',
+      SSID: './assets/images/user-avt.jpg',
       HoTen: registerForm.fullname,
       Email: registerForm.email,
       SoDT: registerForm.phone,

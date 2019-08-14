@@ -19,7 +19,7 @@ export class ShowtimeComponent implements OnInit{
     dots: false,
     animateOut: "fadeOut",
     animateIn: "fadeIn",
-    navText: ["<img src='/assets/img/prev.png' class='btn-nav prev-slide'>", "<img src='/assets/img/next.png' class='btn-nav next-slide'>"],
+    navText: ["<img src='/assets/images/prev.png' class='btn-nav prev-slide'>", "<img src='/assets/images/next.png' class='btn-nav next-slide'>"],
     responsiveClass: true,
     responsive: {
       0: {
@@ -39,14 +39,14 @@ export class ShowtimeComponent implements OnInit{
 
   showingFilmList: any;
   commingFilmList: any = [
-    { filmImg: "/assets/img/commingSoon/lion-king.jpg", filmName: "Lion King", released: "12/07/2019" },
-    { filmImg: "/assets/img/commingSoon/onward.jpg", filmName: "Onward", released: "19/07/2019" },
-    { filmImg: "/assets/img/commingSoon/fantastic-beasts-3.jpg", filmName: "Fantastic Beasts 3", released: "26/07/2019" },
-    { filmImg: "/assets/img/commingSoon/the-angry-birds-movie-2.jpg", filmName: "The Angry Birds Movie 2", released: "02/08/2019" },
-    { filmImg: "/assets/img/commingSoon/the-flash.jpg", filmName: "The Flash", released: "09/08/2019" },
-    { filmImg: "/assets/img/commingSoon/weathering-with-you.jpg", filmName: "Weathering With You", released: "16/08/2019" },
-    { filmImg: "/assets/img/commingSoon/sonic-hedgehog.gif", filmName: "Sonic: The Hedgehog", released: "23/08/2019" },
-    { filmImg: "/assets/img/commingSoon/dino-king-journey-to-fire-mountain.jpg", filmName: "Dino King Journey to Fire Mountain", released: "30/08/2019" }
+    { filmImg: "./assets/images/commingSoon/lion-king.jpg", filmName: "Lion King", released: "12/07/2019" },
+    { filmImg: "./assets/images/commingSoon/onward.jpg", filmName: "Onward", released: "19/07/2019" },
+    { filmImg: "./assets/images/commingSoon/fantastic-beasts-3.jpg", filmName: "Fantastic Beasts 3", released: "26/07/2019" },
+    { filmImg: "./assets/images/commingSoon/the-angry-birds-movie-2.jpg", filmName: "The Angry Birds Movie 2", released: "02/08/2019" },
+    { filmImg: "./assets/images/commingSoon/the-flash.jpg", filmName: "The Flash", released: "09/08/2019" },
+    { filmImg: "./assets/images/commingSoon/weathering-with-you.jpg", filmName: "Weathering With You", released: "16/08/2019" },
+    { filmImg: "./assets/images/commingSoon/sonic-hedgehog.gif", filmName: "Sonic: The Hedgehog", released: "23/08/2019" },
+    { filmImg: "./assets/images/commingSoon/dino-king-journey-to-fire-mountain.jpg", filmName: "Dino King Journey to Fire Mountain", released: "30/08/2019" }
   ];
 
   subFilmList = new Subscription;
