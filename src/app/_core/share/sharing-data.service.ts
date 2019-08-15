@@ -26,6 +26,10 @@ export class SharingDataService {
   private pushingLoginStatusToStore = new BehaviorSubject({} as object)
   sharingLoginStatusFromLoginPage = this.pushingLoginStatusToStore.asObservable();
 
+  // Review from review to banner
+  private pushingReviewToStore = new BehaviorSubject({} as object)
+  sharingReviewFromReviewComponent = this.pushingReviewToStore.asObservable();
+
   constructor() { }
 
   sharingFilmListMethod(filmListFromShowtimeComponent: any) {
@@ -46,5 +50,9 @@ export class SharingDataService {
 
   sharingLoginStatusMethod(loginStatusFromLoginPage: any) {
     this.pushingLoginStatusToStore.next(loginStatusFromLoginPage);
+  }
+
+  sharingReviewMethod(reviewFromReviewComponent: any){
+    this.pushingReviewToStore.next(reviewFromReviewComponent);
   }
 }

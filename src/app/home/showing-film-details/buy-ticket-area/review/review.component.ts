@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { SharingDataService } from 'src/app/_core/share/sharing-data.service.js';
 import swal from '../../../../../../node_modules/sweetalert/dist/sweetalert.min.js';
 
 @Component({
@@ -9,7 +10,7 @@ import swal from '../../../../../../node_modules/sweetalert/dist/sweetalert.min.
 })
 export class ReviewComponent implements OnInit {
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) { }
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private sharingDataService: SharingDataService) { }
 
   avt: string = '';
   username: string = '';
@@ -63,6 +64,7 @@ export class ReviewComponent implements OnInit {
     }
     this.revArr.unshift(revObj);
     localStorage.setItem('usersRev', JSON.stringify(this.revArr));
+    this.sharingDataService.sharingReviewMethod(this.revArr);
   }
 
   goToLoginPage() {

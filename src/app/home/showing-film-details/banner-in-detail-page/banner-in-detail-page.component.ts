@@ -10,7 +10,7 @@ import { SharingDataService } from 'src/app/_core/share/sharing-data.service';
   styleUrls: ['./banner-in-detail-page.component.scss']
 })
 export class BannerInDetailPageComponent implements OnInit {
-  
+
   filmId: any;
   showingFilm: any;
   subFilmDetail = new Subscription;
@@ -27,35 +27,40 @@ export class BannerInDetailPageComponent implements OnInit {
   ngOnInit() {
     this.getParamsFromURL();
     this.getShowingFilmDetailsFromAPI();
+    this.sharingDataService.sharingReviewFromReviewComponent.subscribe((data: any)=>{
+      if(data !== null) {
+        this.revArr = data;
+      }
+    })
     if (localStorage.getItem('usersRev') !== null) {
       let usersRev = JSON.parse(localStorage.getItem('usersRev'));
       this.revArr = usersRev;
-      let sum: number = 0;
-      let count: number = 0;
-      this.revArr.map(item => {
-        if (item.id.split('-')[0] === this.filmId) {
-          sum = sum + item.point;
-          count++;
-        }
-      })
-      this.isEvaluated = count;
-      this.averagePoint = sum/(count);
-      this.circle = `rotate(-${360-(((this.averagePoint)/10)*360)}deg)`;
-      if(this.averagePoint >= 5){
-        this.showCircle = true;
-      } else {
-        this.showCircle = false;
+    }
+    let sum: number = 0;
+    let count: number = 0;
+    this.revArr.map(item => {
+      if (item.id.split('-')[0] === this.filmId) {
+        sum = sum + item.point;
+        count++;
       }
+    })
+    this.isEvaluated = count;
+    this.averagePoint = sum / (count);
+    this.circle = `rotate(-${360 - (((this.averagePoint) / 10) * 360)}deg)`;
+    if (this.averagePoint >= 5) {
+      this.showCircle = true;
+    } else {
+      this.showCircle = false;
     }
   }
 
-  getParamsFromURL(){
+  getParamsFromURL() {
     this.filmId = this.activatedRoute.snapshot.paramMap.get("id");
   }
 
-  getShowingFilmDetailsFromAPI(){
+  getShowingFilmDetailsFromAPI() {
     const uri = `QuanLyPhim/LayChiTietPhim?MaPhim=${this.filmId}`
-    this.subFilmDetail = this.filmManagementService.GET(uri).subscribe((data: any)=>{
+    this.subFilmDetail = this.filmManagementService.GET(uri).subscribe((data: any) => {
       this.showingFilm = data;
       this.sharingDataService.sharingFilmDetailMethod(data);
       for (let star = 0; star < this.showingFilm.DanhGia; star++) {
@@ -67,7 +72,7 @@ export class BannerInDetailPageComponent implements OnInit {
     })
   }
 
-  srcollToBuyTicketArea(){
+  srcollToBuyTicketArea() {
     window.scrollTo({
       top: 450,
       behavior: 'smooth'
@@ -78,7 +83,7 @@ export class BannerInDetailPageComponent implements OnInit {
     this.sharingDataService.sharingTrailerMethod(this.showingFilm.Trailer);
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.subFilmDetail.unsubscribe();
     console.log("Unsubcribe film detail from banner in detail page", this.subFilmDetail);
   }
