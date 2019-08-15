@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FilmManagementService } from 'src/app/_core/services/film-management.service';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -16,28 +16,28 @@ export class BannerInDetailPageComponent implements OnInit {
   subFilmDetail = new Subscription;
   fullStarArr: any = [];
   emptyStarArr: any = [];
-  revArr: any = [];
   averagePoint: number;
   isEvaluated: number = 0;
   circle: string;
   showCircle: boolean = true;
-
+  @Input() revArr;
   constructor(private filmManagementService: FilmManagementService, private activatedRoute: ActivatedRoute, private sharingDataService: SharingDataService) { }
 
   ngOnInit() {
+    let sum: number = 0;
+    let count: number = 0;
     this.getParamsFromURL();
     this.getShowingFilmDetailsFromAPI();
-    this.sharingDataService.sharingReviewFromReviewComponent.subscribe((data: any)=>{
-      if(data !== null) {
+    this.sharingDataService.sharingReviewFromReviewComponent.subscribe((data: any) => {
+      if (typeof data !== 'object') {
         this.revArr = data;
+        console.log(this.revArr);
       }
     })
     if (localStorage.getItem('usersRev') !== null) {
       let usersRev = JSON.parse(localStorage.getItem('usersRev'));
       this.revArr = usersRev;
     }
-    let sum: number = 0;
-    let count: number = 0;
     this.revArr.map(item => {
       if (item.id.split('-')[0] === this.filmId) {
         sum = sum + item.point;

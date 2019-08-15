@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SharingDataService } from 'src/app/_core/share/sharing-data.service.js';
 import swal from '../../../../../../node_modules/sweetalert/dist/sweetalert.min.js';
@@ -20,8 +20,8 @@ export class ReviewComponent implements OnInit {
   isFbLogedIn: boolean;
   starPoint: number = 0;
   str: string;
-  revArr: any = [];
   filmId: any;
+  @Input() revArr;
 
   ngOnInit() {
     this.getParamsFromURL()

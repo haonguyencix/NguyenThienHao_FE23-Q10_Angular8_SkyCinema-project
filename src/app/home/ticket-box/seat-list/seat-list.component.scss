@@ -85,7 +85,7 @@
   .buy-ticket-info {
     color: rgba(220, 220, 220);
     .card {
-      background-color: transparent;
+      background-color: rgba(0, 0, 0, 0.7);
       box-shadow: 0 0 20px 1px gray;
       max-width: 540px;
       padding: 5px;
@@ -118,7 +118,7 @@
       }
     }
     .result{
-      background-color: transparent;
+      background-color: rgba(0, 0, 0, 0.7);
       box-shadow: 0 0 20px 1px gray;
       max-width: 540px;
       padding: 15px;

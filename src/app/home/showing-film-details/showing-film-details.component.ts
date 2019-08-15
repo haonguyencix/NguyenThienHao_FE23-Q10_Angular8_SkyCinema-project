@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SharingDataService } from 'src/app/_core/share/sharing-data.service';
+// import { SharingDataService } from 'src/app/_core/share/sharing-data.service';
 
 @Component({
   selector: 'app-showing-film-details',
@@ -43,7 +43,7 @@ export class ShowingFilmDetailsComponent implements OnInit {
       id: "39-jghgfg55fdf",
       avt: "./assets/img/user-avt5.jpg",
       username: "Hao Nhat Ho",
-      point: 1,
+      point: 8,
       post: "Mình dẫn người yêu đi coi, người yêu mình thích mê",
       likes: 29,
       isLiked: false,
@@ -139,12 +139,9 @@ export class ShowingFilmDetailsComponent implements OnInit {
       isLiked: false,
       isFbLogedIn: false
     }
-  ];
-
-  constructor(private sharingDataService: SharingDataService) {}
+  ]
+  constructor() {}
 
   ngOnInit() {
-    localStorage.setItem('usersRev', JSON.stringify(this.revArr));
-    this.sharingDataService.sharingReviewMethod(this.revArr);
   }
 }
