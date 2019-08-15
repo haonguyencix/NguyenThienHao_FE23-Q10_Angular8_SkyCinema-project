@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
   avt: string = '';
   isLogedIn: boolean;
   isFbLogedIn: boolean;
-  revArr: any = [];
+  revArr: any;
 
   showBTT: boolean = false;
   showSup: boolean = false;
