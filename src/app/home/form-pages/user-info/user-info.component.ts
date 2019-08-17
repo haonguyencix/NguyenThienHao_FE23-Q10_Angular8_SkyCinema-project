@@ -40,8 +40,6 @@ export class UserInfoComponent implements OnInit {
           title: "The function of adding or editing avatar hasn't been updated!",
           icon: "error",
           buttons: "OK"
-        }).then(() => {
-          location.reload();
         })
       }
     }
