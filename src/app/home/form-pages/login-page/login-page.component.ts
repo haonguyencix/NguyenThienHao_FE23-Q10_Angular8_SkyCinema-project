@@ -4,6 +4,7 @@ import swal from '../../../../../node_modules/sweetalert/dist/sweetalert.min.js'
 import { Router } from '@angular/router';
 import { SharingDataService } from 'src/app/_core/share/sharing-data.service.js';
 declare var FB: any;
+declare const gapi: any;
 
 @Component({
   selector: 'app-login-page',
@@ -95,6 +96,46 @@ export class LoginPageComponent implements OnInit {
           buttons: "OK"
         })
       }
-    }, {scope: 'email'});
+    }, { scope: 'email' });
+  }
+
+  public auth2: any;
+  public googleInit() {
+    gapi.load('auth2', () => {
+      this.auth2 = gapi.auth2.init({
+        client_id: "82391064746-8bgec36pj4gdan4gk3h23o7e1muncmbe.apps.googleusercontent.com",
+        cookiepolicy: 'single_host_origin',
+        scope: 'profile email'
+      });
+      this.attachSignin(document.getElementById('googleBtn'));
+    });
+  }
+  public attachSignin(element) {
+    this.auth2.attachClickHandler(element, {},
+      (googleUser) => {
+        this.loginStatus = true;
+        this.fbLoginStatus = false;
+        let profile = googleUser.getBasicProfile();
+        let name = profile.getName();
+        let avtUrl = profile.getImageUrl();
+        this.sharingDataService.sharingLoginStatusMethod({ TaiKhoan: name, SSID: avtUrl, loginStatus: this.loginStatus, fbLoginStatus: this.fbLoginStatus });
+        localStorage.setItem("userLogin", JSON.stringify({ TaiKhoan: name, SSID: avtUrl, loginStatus: this.loginStatus, fbLoginStatus: this.fbLoginStatus }));
+        window.history.back();
+        swal({
+          title: "LOGGED IN SUCCESSFULLY",
+          icon: "success",
+          buttons: "OK"
+        })
+      }, () => {
+        swal({
+          title: "LOGIN FAIL!",
+          icon: "error",
+          buttons: "OK"
+        })
+      });
+  }
+
+  ngAfterViewInit() {
+    this.googleInit();
   }
 }

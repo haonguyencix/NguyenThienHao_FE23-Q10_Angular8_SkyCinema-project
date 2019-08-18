@@ -22,16 +22,30 @@
         margin-top: 6px;
       }
     }
-    .btn-fb-login {
-      color: gainsboro;
-      line-height: 40px;
-      background-color: #3b5998;
-      border-radius: 5px;
-      &:focus {
-        box-shadow: none;
-      }
-      .icon-fb {
+    .login-with{
+      .btn-g-login {
         color: gainsboro;
+        line-height: 40px;
+        background-color: #DC3545;
+        border-radius: 5px;
+        &:focus {
+          box-shadow: none;
+        }
+        .icon-fb {
+          color: gainsboro;
+        }
+      }
+      .btn-fb-login {
+        color: gainsboro;
+        line-height: 40px;
+        background-color: #3b5998;
+        border-radius: 5px;
+        &:focus {
+          box-shadow: none;
+        }
+        .icon-fb {
+          color: gainsboro;
+        }
       }
     }
     .btn-signin {
