@@ -24,6 +24,7 @@ export class InfoTabComponent implements OnInit {
     let objUser = {
       TaiKhoan: this.userLogin.TaiKhoan,
       MatKhau: this.userLogin.MatKhau,
+      SSID: "./assets/img/user-avt10.jpg",
       HoTen: infoForm.fullname,
       Email: infoForm.email,
       SoDT: infoForm.phone,

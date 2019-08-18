@@ -25,6 +25,7 @@ export class ChangePassTabComponent implements OnInit {
     let objUser = {
       TaiKhoan: this.userLogin.TaiKhoan,
       MatKhau: changePassForm.confirmpass,
+      SSID: "./assets/img/user-avt10.jpg",
       HoTen: this.userLogin.HoTen,
       Email: this.userLogin.Email,
       SoDT: this.userLogin.SoDT,
