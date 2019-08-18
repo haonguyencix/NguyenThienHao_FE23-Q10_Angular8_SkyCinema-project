@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
   avt: string = '';
   isLogedIn: boolean;
   isFbLogedIn: boolean;
+  isGgLogedIn: boolean;
   revArr: any;
 
   showBTT: boolean = false;
@@ -29,6 +30,7 @@ export class HeaderComponent implements OnInit {
       this.avt = userLogin.SSID;
       this.isLogedIn = userLogin.loginStatus;
       this.isFbLogedIn = userLogin.fbLoginStatus;
+      this.isGgLogedIn = userLogin.ggLoginStatus;
     };
     this.sharingDataService.sharingLoginStatusFromLoginPage.subscribe((data: any) => {
       if (data.loginStatus === true) {
@@ -36,6 +38,7 @@ export class HeaderComponent implements OnInit {
         this.avt = data.SSID;
         this.isLogedIn = data.loginStatus;
         this.isFbLogedIn = data.fbLoginStatus;
+        this.isGgLogedIn = data.ggLoginStatus;
       }
     });
     if (localStorage.getItem('usersRev') !== null) {
@@ -202,6 +205,7 @@ export class HeaderComponent implements OnInit {
         localStorage.removeItem("detail");
         this.isLogedIn = false;
         this.isFbLogedIn = false;
+        this.isGgLogedIn = false;
         this.revArr.map(item => {
           item.isLiked = false;
         })

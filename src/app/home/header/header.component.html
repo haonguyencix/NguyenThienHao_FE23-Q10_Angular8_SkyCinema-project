@@ -30,25 +30,32 @@
         </li>
       </ul>
 
-      <!-- Login and Sign in -->
+      <!-- Login and Sign up -->
       <ul id="navbar-nav" class="navbar-nav user-account w-25 pl-auto">
         <li class="nav-item">
-          <img class="avatar" [src]="isLogedIn? avt: '/assets/img/avatar.png'" width="35px" height="35px"
-            style="border-radius: 50%; margin-top: 5px">
+          <div class="avatar">
+            <img [src]="isLogedIn? avt: '/assets/img/avatar.png'" width="35px" height="35px"
+              style="border-radius: 50%; margin-top: 5px">
+            <div *ngIf="isFbLogedIn" class="fb-icon text-center">
+              <i class="fa fa-facebook icon"></i>
+            </div>
+            <div *ngIf="isGgLogedIn" class="gg-icon text-center">
+                <i class="fa fa-google icon"></i>
+              </div>
+          </div>
         </li>
 
         <ng-container *ngIf="isLogedIn; else notLogin">
 
           <li class="nav-item">
 
-            <ng-container *ngIf="!isFbLogedIn; else fbLogin">
-              <a class="nav-link border-right py-0 my-2"
+            <ng-container *ngIf="!isFbLogedIn || !isGgLogedIn; else fbggLogin">
+              <a [title]="isUsername" class="nav-link border-right py-0 my-2"
                 routerLink="/home/form-pages/user-info">{{ (isUsername.length > 12)? (isUsername | shortcut:12): (isUsername) }}</a>
             </ng-container>
 
-            <ng-template #fbLogin>
-              <a class="nav-link border-right py-0 my-2" href="https://www.facebook.com/settings"
-                target="_blank">{{ (isUsername.length > 12)? (isUsername | shortcut:12): (isUsername) }}</a>
+            <ng-template #fbggLogin>
+              <a [title]="isUsername" class="nav-link border-right py-0 my-2">{{ (isUsername.length > 12)? (isUsername | shortcut:12): (isUsername) }}</a>
             </ng-template>
 
           </li>

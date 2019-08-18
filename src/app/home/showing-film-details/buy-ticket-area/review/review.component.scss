@@ -126,6 +126,21 @@
             font-size: 12px;
           }
         }
+        .gg-icon {
+          position: absolute;
+          right: -60%;
+          bottom: -15%;
+          line-height: 15px;
+          background-color: #dc3545;
+          width: 20px;
+          height: 21px;
+          border-radius: 7px;
+          border: 3px solid black;
+          .icon {
+            color: gainsboro;
+            font-size: 11px;
+          }
+        }
       }
     }
   }

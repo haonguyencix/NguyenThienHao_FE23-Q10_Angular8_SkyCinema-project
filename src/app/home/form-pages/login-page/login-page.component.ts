@@ -16,6 +16,7 @@ export class LoginPageComponent implements OnInit {
   constructor(private sharingDataService: SharingDataService, private filmManagementService: FilmManagementService, private router: Router) { }
   loginStatus: boolean;
   fbLoginStatus: boolean;
+  ggLoginStatus: boolean;
 
   ngOnInit() {
     (window as any).fbAsyncInit = () => {
@@ -39,6 +40,7 @@ export class LoginPageComponent implements OnInit {
   login(loginForm) {
     this.loginStatus = false;
     this.fbLoginStatus = false;
+    this.ggLoginStatus = false;
     const uri = `QuanLyNguoiDung/DangNhap?TaiKhoan=${loginForm.username}&MatKhau=${loginForm.password}`
     this.filmManagementService.POST(uri).subscribe((data: any) => {
       if (data === "Tài khoản hoặc mật khẩu không đúng !") {
@@ -51,8 +53,9 @@ export class LoginPageComponent implements OnInit {
       else {
         this.loginStatus = true;
         this.fbLoginStatus = false;
-        this.sharingDataService.sharingLoginStatusMethod({ ...data, loginStatus: this.loginStatus, fbLoginStatus: this.fbLoginStatus });
-        localStorage.setItem("userLogin", JSON.stringify({ ...data, loginStatus: this.loginStatus, fbLoginStatus: this.fbLoginStatus }));
+        this.ggLoginStatus = false;
+        this.sharingDataService.sharingLoginStatusMethod({ ...data, loginStatus: this.loginStatus, fbLoginStatus: this.fbLoginStatus, ggLoginStatus: this.ggLoginStatus });
+        localStorage.setItem("userLogin", JSON.stringify({ ...data, loginStatus: this.loginStatus, fbLoginStatus: this.fbLoginStatus, ggLoginStatus: this.ggLoginStatus }));
         window.history.back();
         swal({
           title: "LOGGED IN SUCCESSFULLY",
@@ -68,8 +71,8 @@ export class LoginPageComponent implements OnInit {
       if (res2 && !res2.error) {
         FB.api(`/${res2.id}/picture`, 'GET', { "redirect": "false" }, (res3) => {
           if (res3 && !res3.error) {
-            this.sharingDataService.sharingLoginStatusMethod({ ...res1, TaiKhoan: res2.name, SSID: res3.data.url, loginStatus: this.loginStatus, fbLoginStatus: this.fbLoginStatus });
-            localStorage.setItem("userLogin", JSON.stringify({ ...res1, TaiKhoan: res2.name, SSID: res3.data.url, loginStatus: this.loginStatus, fbLoginStatus: this.fbLoginStatus }));
+            this.sharingDataService.sharingLoginStatusMethod({ ...res1, TaiKhoan: res2.name, SSID: res3.data.url, loginStatus: this.loginStatus, fbLoginStatus: this.fbLoginStatus, ggLoginStatus: this.ggLoginStatus });
+            localStorage.setItem("userLogin", JSON.stringify({ ...res1, TaiKhoan: res2.name, SSID: res3.data.url, loginStatus: this.loginStatus, fbLoginStatus: this.fbLoginStatus, ggLoginStatus: this.ggLoginStatus }));
           }
         })
       }
@@ -81,6 +84,7 @@ export class LoginPageComponent implements OnInit {
       if (res1.authResponse && res1.status === 'connected') {
         this.loginStatus = true;
         this.fbLoginStatus = true;
+        this.ggLoginStatus = false;
         window.history.back();
         this.getAPI(res1);
         swal({
@@ -115,11 +119,12 @@ export class LoginPageComponent implements OnInit {
       (googleUser) => {
         this.loginStatus = true;
         this.fbLoginStatus = false;
+        this.ggLoginStatus = true;
         let profile = googleUser.getBasicProfile();
         let name = profile.getName();
         let avtUrl = profile.getImageUrl();
-        this.sharingDataService.sharingLoginStatusMethod({ TaiKhoan: name, SSID: avtUrl, loginStatus: this.loginStatus, fbLoginStatus: this.fbLoginStatus });
-        localStorage.setItem("userLogin", JSON.stringify({ TaiKhoan: name, SSID: avtUrl, loginStatus: this.loginStatus, fbLoginStatus: this.fbLoginStatus }));
+        this.sharingDataService.sharingLoginStatusMethod({ TaiKhoan: name, SSID: avtUrl, loginStatus: this.loginStatus, fbLoginStatus: this.fbLoginStatus, ggLoginStatus: this.ggLoginStatus });
+        localStorage.setItem("userLogin", JSON.stringify({ TaiKhoan: name, SSID: avtUrl, loginStatus: this.loginStatus, fbLoginStatus: this.fbLoginStatus, ggLoginStatus: this.ggLoginStatus }));
         window.history.back();
         swal({
           title: "LOGGED IN SUCCESSFULLY",

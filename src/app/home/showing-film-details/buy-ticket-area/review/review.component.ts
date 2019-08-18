@@ -18,6 +18,7 @@ export class ReviewComponent implements OnInit {
   isLiked: boolean = false;
   isLogedIn: boolean;
   isFbLogedIn: boolean;
+  isGgLogedIn: boolean;
   starPoint: number = 0;
   str: string;
   filmId: any;
@@ -32,6 +33,9 @@ export class ReviewComponent implements OnInit {
       this.isLogedIn = userLogin.loginStatus;
       if (userLogin.fbLoginStatus === true) {
         this.isFbLogedIn = userLogin.fbLoginStatus;
+      } 
+      if (userLogin.ggLoginStatus === true){
+        this.isGgLogedIn = userLogin.ggLoginStatus;
       }
     };
     if (localStorage.getItem('usersRev') !== null) {
@@ -60,7 +64,8 @@ export class ReviewComponent implements OnInit {
       post: this.str,
       likes: this.likes,
       isLiked: this.isLiked,
-      isFbLogedIn: this.isFbLogedIn
+      isFbLogedIn: this.isFbLogedIn,
+      isGgLogedIn: this.isGgLogedIn
     }
     this.revArr.unshift(revObj);
     localStorage.setItem('usersRev', JSON.stringify(this.revArr));

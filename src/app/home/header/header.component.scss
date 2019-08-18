@@ -23,18 +23,51 @@
         font-size: 19px;
         letter-spacing: 0.5px;
         color: rgba(220, 220, 220);
-        transition: all .3s;
+        transition: all 0.3s;
         cursor: pointer;
       }
     }
-    .user-account { 
+    .user-account {
+      .avatar {
+        position: relative;
+        .fb-icon {
+          position: absolute;
+          right: -15%;
+          bottom: -15%;
+          line-height: 17px;
+          background-color: #3b5998;
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          border: 2px solid black;
+          .icon {
+            color: gainsboro;
+            font-size: 12px;
+          }
+        }
+        .gg-icon {
+          position: absolute;
+          right: -15%;
+          bottom: -15%;
+          line-height: 15px;
+          background-color: #dc3545;
+          width: 20px;
+          height: 21px;
+          border-radius: 7px;
+          border: 3px solid black;
+          .icon {
+            color: gainsboro;
+            font-size: 11px;
+          }
+        }
+      }
       .nav-link {
         font-size: 18px;
         letter-spacing: 0.5px;
         color: rgba(220, 220, 220);
         cursor: pointer;
         transition: transform 0.2s;
-        &:active{
+        &:active {
           transform: scale(0.9);
         }
       }
@@ -62,11 +95,11 @@
     }
   }
 }
-.back-to-top{
-  button{
+.back-to-top {
+  button {
     background: 0 0;
     border: 0;
-    &:focus{
+    &:focus {
       outline: 0;
     }
   }
@@ -74,22 +107,22 @@
   bottom: 2%;
   right: 2%;
   opacity: 0;
-  transition: all .3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   z-index: 10;
   cursor: pointer;
-  &:active{
+  &:active {
     transform: scale(0.8);
   }
 }
-.support{
+.support {
   position: fixed;
   bottom: 2%;
   left: 0;
-  transition: all .3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   opacity: 0;
   z-index: 10;
   cursor: pointer;
 }
-.show{
+.show {
   opacity: 1;
 }
