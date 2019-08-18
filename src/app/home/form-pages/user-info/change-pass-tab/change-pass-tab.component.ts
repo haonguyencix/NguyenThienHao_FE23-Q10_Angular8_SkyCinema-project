@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FilmManagementService } from 'src/app/_core/services/film-management.service.js';
 import swal from '../../../../../../node_modules/sweetalert/dist/sweetalert.min.js'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-change-pass-tab',
@@ -9,7 +10,7 @@ import swal from '../../../../../../node_modules/sweetalert/dist/sweetalert.min.
 })
 export class ChangePassTabComponent implements OnInit {
 
-  constructor(private filmManagementService: FilmManagementService) { }
+  constructor(private filmManagementService: FilmManagementService, private router: Router) { }
 
   userLogin: any;
 
@@ -32,15 +33,15 @@ export class ChangePassTabComponent implements OnInit {
     };
     const uri = "QuanLyNguoiDung/CapNhatThongTin";
     if (changePassForm.currentpass === this.userLogin.MatKhau) {
-      if(changePassForm.confirmpass === changePassForm.newpass) {
+      if (changePassForm.confirmpass === changePassForm.newpass) {
         this.filmManagementService.POST(uri, objUser).subscribe((data: any) => {
           localStorage.setItem("userLogin", JSON.stringify(data));
           swal({
-            title: "YOUR PASSWORD HAVE CHANGED SUCCESSFULLY!",
+            title: "SUCCESSFULLY, SIGN IN AGAIN WITH YOUR NEW PASSWORD!!",
             icon: "success",
             buttons: "OK"
           }).then(() => {
-            location.reload();
+            this.router.navigate(["/home/form-pages/login-page"]);
           })
         })
       } else {
