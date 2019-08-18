@@ -187,6 +187,7 @@ export class HeaderComponent implements OnInit {
       buttons: true,
       dangerMode: true,
     }).then((willLogOut) => {
+      this.router.navigate(["/home"]);
       if (willLogOut) {
         window.onload = () => {
           FB.init({ apiKey: 'b65c1efa72f570xxxxxxxxxxxxxxxxx' });
@@ -210,7 +211,6 @@ export class HeaderComponent implements OnInit {
           item.isLiked = false;
         })
         localStorage.setItem('usersRev', JSON.stringify(this.revArr));
-        this.router.navigate(["/home"]);
         swal("LOGGED OUT!", {
           icon: "success",
           buttons: 'OK'
